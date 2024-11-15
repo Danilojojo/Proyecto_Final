@@ -11,7 +11,7 @@ package mediasafe;
 public class Login {
     private String name;
     private int age;
-    private String mail;
+  
 
     public String getName() {
         return name;
@@ -29,13 +29,12 @@ public class Login {
         this.age = age;
     }
 
-    public String getMail() {
-        return mail;
+    
+    public void datos(){
+        
     }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
+    
+    
     
     
     
