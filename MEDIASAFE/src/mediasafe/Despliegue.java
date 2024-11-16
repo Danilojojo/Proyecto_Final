@@ -50,6 +50,11 @@ public class Despliegue extends javax.swing.JPanel {
 
         jTextField2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jTextField2.setText("Ingresar Nuevo Recordatorio");
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -61,6 +66,11 @@ public class Despliegue extends javax.swing.JPanel {
 
         jTextField4.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jTextField4.setText("SALIR");
+        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout LateralLayout = new javax.swing.GroupLayout(Lateral);
         Lateral.setLayout(LateralLayout);
@@ -196,11 +206,7 @@ public class Despliegue extends javax.swing.JPanel {
 
     private void DespliegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DespliegoMouseClicked
         // TODO add your handling code here:
-        JPanel newFrame = new JPanel();
-        // Add components to the new frame as needed
-        // ...
-        // Show the new frame
-        newFrame.setVisible(true);
+        
     }//GEN-LAST:event_DespliegoMouseClicked
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -210,6 +216,20 @@ public class Despliegue extends javax.swing.JPanel {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField2MouseClicked
+
+    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
+        // TODO add your handling code here:
+          Entrada salir = new Entrada();
+        salir.setVisible(true);
+        salir.pack();
+        salir.setLocationRelativeTo(null);
+        salir.dispose();
+    }//GEN-LAST:event_jTextField4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
