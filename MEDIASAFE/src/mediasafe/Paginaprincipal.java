@@ -17,12 +17,10 @@ public class Paginaprincipal extends javax.swing.JFrame {
         initComponents();
     
         Despliegue externo = new Despliegue();
-        externo.setSize(192,302);
+        externo.setSize(800, 800);
         barra.add(externo);
     
-        Despliegue evento = new Despliegue();
-        evento.setSize(192,302);
-        barra.add(evento);
+    
     }
 
     /**
@@ -42,7 +40,7 @@ public class Paginaprincipal extends javax.swing.JFrame {
         barra.setLayout(barraLayout);
         barraLayout.setHorizontalGroup(
             barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
+            .addGap(0, 760, Short.MAX_VALUE)
         );
         barraLayout.setVerticalGroup(
             barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -56,7 +54,7 @@ public class Paginaprincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

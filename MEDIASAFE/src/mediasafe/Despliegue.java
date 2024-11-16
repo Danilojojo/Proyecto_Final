@@ -51,6 +51,11 @@ public class Despliegue extends javax.swing.JPanel {
 
         jButton4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton4.setText("Salir");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LateralLayout = new javax.swing.GroupLayout(Lateral);
         Lateral.setLayout(LateralLayout);
@@ -146,9 +151,9 @@ public class Despliegue extends javax.swing.JPanel {
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Lateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +162,7 @@ public class Despliegue extends javax.swing.JPanel {
                 .addComponent(Despliego)
                 .addGap(18, 18, 18)
                 .addComponent(Lateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,6 +191,17 @@ public class Despliegue extends javax.swing.JPanel {
         
     }//GEN-LAST:event_DespliegoMouseClicked
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+          Entrada salir = new Entrada();
+        salir.setVisible(true);
+        salir.pack();
+        salir.setLocationRelativeTo(null);
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+    
+       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Despliego;
