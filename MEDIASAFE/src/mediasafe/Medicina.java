@@ -152,16 +152,20 @@ public class Medicina extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-        
+          Paginaprincipal aceptar = new Paginaprincipal();
+        aceptar.setVisible(true);
+        aceptar.pack();
+        aceptar.setLocationRelativeTo(null);
+        this.dispose();
 
     }//GEN-LAST:event_RegistrarseActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         // TODO add your handling code here:
-        Entrada panta =new Entrada();
-        panta.setVisible(true);
-        panta.pack();
-        panta.setLocationRelativeTo(null);
+         Paginaprincipal cancelar =new Paginaprincipal();
+        cancelar.setVisible(true);
+        cancelar.pack();
+        cancelar.setLocationRelativeTo(null);
     }//GEN-LAST:event_CancelarActionPerformed
 
     /**
