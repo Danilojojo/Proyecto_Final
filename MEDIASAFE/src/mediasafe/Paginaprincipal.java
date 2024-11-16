@@ -194,6 +194,7 @@ public class Paginaprincipal extends javax.swing.JFrame {
 
     private void DespliegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DespliegoMouseClicked
         // TODO add your handling code here:
+        
 
     }//GEN-LAST:event_DespliegoMouseClicked
 
