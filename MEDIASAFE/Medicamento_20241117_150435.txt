@@ -1,0 +1,4 @@
+Enfermedad: friebre
+Medicamento: amollosilina
+Frecuencia: ehoras
+Duración: 3

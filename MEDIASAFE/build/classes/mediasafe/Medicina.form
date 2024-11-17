@@ -31,7 +31,7 @@
                           <Component id="label3" min="-2" max="-2" attributes="0"/>
                           <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Name" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Component id="Enfe" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                           <Component id="medi" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                           <Component id="cuando" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                           <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -40,7 +40,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                      <Component id="Registrarse" min="-2" max="-2" attributes="0"/>
+                      <Component id="agreg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -72,7 +72,7 @@
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="label3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Name" min="-2" max="-2" attributes="0"/>
+              <Component id="Enfe" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
               <Component id="fin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Registrarse" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="agreg" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="96" max="32767" attributes="0"/>
@@ -104,7 +104,7 @@
         <Property name="text" type="java.lang.String" value="INGRESE SU MEDICAMENTO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Name">
+    <Component class="javax.swing.JTextField" name="Enfe">
     </Component>
     <Component class="java.awt.Label" name="label3">
       <Properties>
@@ -147,12 +147,12 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="cuando">
     </Component>
-    <Component class="javax.swing.JButton" name="Registrarse">
+    <Component class="javax.swing.JButton" name="agreg">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Aceptar"/>
+        <Property name="text" type="java.lang.String" value="Agragar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistrarseActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Cancelar">

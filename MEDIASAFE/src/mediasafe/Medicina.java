@@ -5,6 +5,14 @@
 package mediasafe;
 
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
+
+
 
 /**
  *
@@ -20,10 +28,12 @@ public class Medicina extends javax.swing.JFrame {
     public Medicina() {
     
         initComponents();
-   
-
+  
+        
+    
     }
-
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,7 +45,7 @@ public class Medicina extends javax.swing.JFrame {
     private void initComponents() {
 
         label2 = new java.awt.Label();
-        Name = new javax.swing.JTextField();
+        Enfe = new javax.swing.JTextField();
         label3 = new java.awt.Label();
         label1 = new java.awt.Label();
         fin = new javax.swing.JTextField();
@@ -43,7 +53,7 @@ public class Medicina extends javax.swing.JFrame {
         label4 = new java.awt.Label();
         label5 = new java.awt.Label();
         cuando = new javax.swing.JPasswordField();
-        Registrarse = new javax.swing.JButton();
+        agreg = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
         label7 = new java.awt.Label();
 
@@ -70,10 +80,10 @@ public class Medicina extends javax.swing.JFrame {
         label5.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         label5.setText("Tiempo de Duración");
 
-        Registrarse.setText("Aceptar");
-        Registrarse.addActionListener(new java.awt.event.ActionListener() {
+        agreg.setText("Agragar");
+        agreg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarseActionPerformed(evt);
+                agregActionPerformed(evt);
             }
         });
 
@@ -100,14 +110,14 @@ public class Medicina extends javax.swing.JFrame {
                             .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Enfe, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(medi, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cuando, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fin, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(Registrarse)
+                        .addComponent(agreg)
                         .addGap(29, 29, 29)
                         .addComponent(Cancelar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -131,7 +141,7 @@ public class Medicina extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Enfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
@@ -146,7 +156,7 @@ public class Medicina extends javax.swing.JFrame {
                 .addComponent(fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrarse)
+                    .addComponent(agreg)
                     .addComponent(Cancelar))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
@@ -158,11 +168,72 @@ public class Medicina extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_finActionPerformed
 
-    private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
+    private void agregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregActionPerformed
         // TODO add your handling code here:
-   
+     String enfermedad = Enfe.getText();
+    String medicamento = medi.getText();
+    String frecuencia = cuando.getText();
+    String duracion = fin.getText();
 
-    }//GEN-LAST:event_RegistrarseActionPerformed
+    // Validación básica
+    if (enfermedad.isEmpty() || medicamento.isEmpty() || frecuencia.isEmpty() || duracion.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos.");
+        return;
+    }
+
+    // Validar que la duración sea un número
+    int duracionEnDias;
+    try {
+        duracionEnDias = Integer.parseInt(duracion); // Convertir a número
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido para la duración.");
+        return;
+    }
+
+    // Crear un nombre único para el archivo
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+    String fecha = sdf.format(new Date());
+    String nombreArchivo = "Medicamento_" + fecha + ".txt";
+
+    // Guardar los datos en un archivo
+    boolean guardado = guardarDatosEnArchivo(nombreArchivo, enfermedad, medicamento, frecuencia, duracionEnDias);
+    if (guardado) {
+        // Limpiar los campos después de guardar
+        Enfe.setText("");
+        medi.setText("");
+        cuando.setText("");
+        fin.setText("");
+
+        // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(null, "Medicamento guardado correctamente.");
+
+        // Abrir la página principal después de guardar los datos
+        Paginaprincipal agregado = new Paginaprincipal();
+        agregado.setVisible(true);
+        agregado.pack();
+        agregado.setLocationRelativeTo(null);
+
+        // Cerrar la ventana actual
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(null, "Hubo un error al guardar el medicamento.");
+    }
+}
+
+// Método para guardar datos en un archivo
+private boolean guardarDatosEnArchivo(String nombreArchivo, String enfermedad, String medicamento, String frecuencia, int duracionEnDias) {
+    try (FileWriter writer = new FileWriter(nombreArchivo)) {
+        writer.write("Enfermedad: " + enfermedad + "\n");
+        writer.write("Medicamento: " + medicamento + "\n");
+        writer.write("Frecuencia: " + frecuencia + "\n");
+        writer.write("Duración: " + duracionEnDias + " días\n");
+        writer.write("-----------------------------------");
+        return true; // Indicar que se guardó correctamente
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false; // Indicar que hubo un error
+    }
+    }//GEN-LAST:event_agregActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         // TODO add your handling code here:
@@ -170,6 +241,7 @@ public class Medicina extends javax.swing.JFrame {
         cancelar.setVisible(true);
         cancelar.pack();
         cancelar.setLocationRelativeTo(null);
+         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 
     /**
@@ -209,8 +281,8 @@ public class Medicina extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
-    private javax.swing.JTextField Name;
-    private javax.swing.JButton Registrarse;
+    private javax.swing.JTextField Enfe;
+    private javax.swing.JButton agreg;
     private javax.swing.JPasswordField cuando;
     private javax.swing.JTextField fin;
     private java.awt.Label label1;
