@@ -217,6 +217,8 @@ public class Entrada extends javax.swing.JFrame {
         ingresar.pack();
         ingresar.setLocationRelativeTo(null);
         this.dispose();
+            }else{
+              JOptionPane.showMessageDialog(null, "Contraseña o Usuario Incorrecto ");  
             }
         }
         

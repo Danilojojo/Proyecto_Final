@@ -4,7 +4,10 @@
  */
 package mediasafe;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Formatter;
 import javax.swing.JOptionPane;
 
@@ -17,41 +20,43 @@ public class Registrarse extends javax.swing.JFrame {
     /**
      * Creates new form Registrarse
      */
-   
-    String barra = File.separator;
-    
-    String ubicacion = System.getProperty("user.dir")+ barra + "Registros" + barra;
+
     
     public Registrarse() {
         initComponents();
     }
-    
-    private void Crear(){
-        String archivo = Name.getText() + ".txt";
-        
-       File crea_ubicacion = new File (ubicacion);
-       File crea_archivo = new File (ubicacion + archivo);
-       
-       if ( Name.getText().equals("")){
-           JOptionPane.showMessageDialog(rootPane, "No hay Nombre");           
-       }else{
-           
-           try{
-         if(crea_archivo.exists()){
-           JOptionPane.showMessageDialog(rootPane, "El Registro ya Exite"); 
-       }else{
-               
-             crea_ubicacion.mkdirs(); 
-             Formatter crea = new Formatter(ubicacion + archivo);
-             crea.format("%s/r/n%s/r/n%s/r/n%s/r/n", "Nombre="+Name.getText(),
-                     "Apellido="+ Lastname.getText() ,"Correo="+Email.getText(),"Contraseña="+ Password.getPassword(),"Confirmarcontraseña="+ Confirmpassword.getPassword());
-         crea.close();  
-        JOptionPane.showMessageDialog(rootPane, "Registrado con Exito"); 
-         }}catch (Exception e){ 
-      JOptionPane.showMessageDialog(rootPane, "Ya existe"); 
-          
-       }
-    }}
+    private void registrarUsuario() {
+        String nombre = Name.getText();
+        String apellido = Lastname.getText();
+        String correo = Email.getText();
+        String password = new String(Password.getPassword());
+        String confimar = new String(Confirmpassword.getPassword());
+
+        // Validar que los campos no estén vacíos
+        if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() || confimar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Guardar los datos en el archivo
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
+            writer.write(nombre + "," + apellido + "," + correo + "," + password);
+            writer.newLine();
+            JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
+
+            // Limpiar los campos
+            Name.setText("");
+            Lastname.setText("");
+            Email.setText("");
+            Password.setText("");
+            Confirmpassword.setText("");
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -211,8 +216,7 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-      
-        Crear();
+     
         
         String n=Name.getText();
         String a=Lastname.getText();
@@ -319,4 +323,8 @@ public class Registrarse extends javax.swing.JFrame {
     private java.awt.Label label5;
     private java.awt.Label label6;
     // End of variables declaration//GEN-END:variables
+
+    private void Crear() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
