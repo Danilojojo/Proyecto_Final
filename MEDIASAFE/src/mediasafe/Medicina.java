@@ -291,7 +291,7 @@ private boolean guardarDatosEnArchivo(String nombreArchivo, String enfermedad, S
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                 new Medicina().setVisible(true);
             }
         });
     }
