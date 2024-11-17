@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Formatter;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import mediasafe.Entrada;
 
 /**
  *
@@ -25,37 +27,6 @@ public class Registrarse extends javax.swing.JFrame {
     public Registrarse() {
         initComponents();
     }
-    private void registrarUsuario() {
-        String nombre = Name.getText();
-        String apellido = Lastname.getText();
-        String correo = Email.getText();
-        String password = new String(Password.getPassword());
-        String confimar = new String(Confirmpassword.getPassword());
-
-        // Validar que los campos no estén vacíos
-        if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() || confimar.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Guardar los datos en el archivo
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
-            writer.write(nombre + "," + apellido + "," + correo + "," + password);
-            writer.newLine();
-            JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
-
-            // Limpiar los campos
-            Name.setText("");
-            Lastname.setText("");
-            Email.setText("");
-            Password.setText("");
-            Confirmpassword.setText("");
-
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
    
 
     /**
@@ -216,8 +187,7 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-     
-        
+        // Campos de Registro
         String n=Name.getText();
         String a=Lastname.getText();
         String e=Email.getText();
@@ -257,7 +227,55 @@ public class Registrarse extends javax.swing.JFrame {
         panta.setLocationRelativeTo(null);
             }
         }
+        }     
+//Guardar en un archivo de blog de notas
+         String nombre = Name.getText();
+        String apellido = Lastname.getText();
+        String correo = Email.getText();
+        String password = new String(Password.getPassword());
+        String confimar = new String(Confirmpassword.getPassword());
+         // Hash the password
+          String hashedPassword = hashPassword(password);
+       // Validar que los campos no estén vacíos
+         if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() ||confimar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
+         // Validar la contraseña
+        if (!esContrasenaValida(password)) {
+            
+            JOptionPane.showMessageDialog(this, 
+                "La contraseña debe contener al menos una letra y un símbolo.", 
+                "Error de contraseña", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        // Guardar los datos en el archivo
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
+            writer.write(nombre + "," + apellido + "," + correo + "," + password);
+            writer.newLine();
+            JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
+
+            // Limpiar los campos
+            Name.setText("");
+            Lastname.setText("");
+            Email.setText("");
+            Password.setText("");
+            Confirmpassword.setText("");
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+   
+
+      private boolean esContrasenaValida(String password) {
+        // Expresión regular: al menos una letra y un símbolo
+        String regex = "^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).+$";
+        return Pattern.matches(regex, password);
+    }
+
+ 
         
     }//GEN-LAST:event_RegistrarseActionPerformed
 
