@@ -24,75 +24,67 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="label6" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="label4" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="label5" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="label3" min="-2" max="-2" attributes="0"/>
-                          <Component id="label1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Component id="label6" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="label4" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="label5" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="label3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label1" min="-2" max="-2" attributes="0"/>
+                  <Component id="Registrarse" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="Name" min="-2" pref="183" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="Name" min="-2" pref="183" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Email" max="32767" attributes="0"/>
-                                  <Component id="Password" max="32767" attributes="0"/>
-                                  <Component id="Confirmpassword" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="Confirmpassword" pref="183" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="Password" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Email" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Lastname" alignment="0" pref="183" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="Lastname" min="-2" pref="183" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="74" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
+              <Component id="label2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="label2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="Registrarse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="label2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="label3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Name" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="label2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Name" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="Lastname" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Component id="label1" min="-2" max="-2" attributes="0"/>
+                  <Component id="Lastname" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -106,7 +98,10 @@
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="label5" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="Password" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="Password" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -118,12 +113,12 @@
                       <Component id="Confirmpassword" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Registrarse" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="120" max="32767" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,7 +127,7 @@
     <Component class="java.awt.Label" name="label1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="14" style="0"/>
+          <Font name="Georgia" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Apellido"/>
       </Properties>
@@ -140,7 +135,7 @@
     <Component class="java.awt.Label" name="label2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="24" style="0"/>
+          <Font name="Georgia" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Registrate"/>
       </Properties>
@@ -148,7 +143,7 @@
     <Component class="java.awt.Label" name="label3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="14" style="0"/>
+          <Font name="Georgia" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
@@ -156,7 +151,7 @@
     <Component class="java.awt.Label" name="label4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="14" style="0"/>
+          <Font name="Georgia" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Correo"/>
       </Properties>
@@ -164,7 +159,7 @@
     <Component class="java.awt.Label" name="label5">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="14" style="0"/>
+          <Font name="Georgia" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
       </Properties>
@@ -172,7 +167,7 @@
     <Component class="java.awt.Label" name="label6">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="14" style="0"/>
+          <Font name="Georgia" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Confirme su Contrase&#xf1;a"/>
       </Properties>
@@ -188,6 +183,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Registrarse">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Georgia" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Registrarse"/>
       </Properties>
       <Events>
@@ -196,6 +194,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Cancelar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Georgia" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>

@@ -17,7 +17,8 @@ public class MEDISAFE {
         // TODO code application logic here
         Entrada Ingreso = new Entrada();
         Ingreso.setVisible(true);
-   
+        Ingreso.pack();
+        Ingreso.setLocationRelativeTo(null);
     }
     
 }
