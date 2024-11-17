@@ -15,6 +15,8 @@ public class Entrada extends javax.swing.JFrame {
      */
     public Entrada() {
         initComponents();
+        
+       
     }
 
     /**

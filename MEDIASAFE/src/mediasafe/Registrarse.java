@@ -4,6 +4,9 @@
  */
 package mediasafe;
 
+import java.io.File;
+import java.util.Arrays;
+import java.util.Formatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,9 +18,41 @@ public class Registrarse extends javax.swing.JFrame {
     /**
      * Creates new form Registrarse
      */
+   
+    String barra = File.separator;
+    
+    String ubicacion = System.getProperty("user.dir")+ barra + "Registros" + barra;
+    
     public Registrarse() {
         initComponents();
     }
+    
+    private void Crear(){
+        String archivo = Name.getText() + ".txt";
+        
+       File crea_ubicacion = new File (ubicacion);
+       File crea_archivo = new File (ubicacion + archivo);
+       
+       if ( Name.getText().equals("")){
+           JOptionPane.showMessageDialog(rootPane, "No hay Nombre");           
+       }else{
+           
+           try{
+         if(crea_archivo.exists()){
+           JOptionPane.showMessageDialog(rootPane, "El Registro ya Exite"); 
+       }else{
+               
+             crea_ubicacion.mkdirs(); 
+             Formatter crea = new Formatter(ubicacion + archivo);
+             crea.format("%s/r/n%s/r/n%s/r/n%s/r/n", "Nombre="+Name.getText(),
+                     "Apellido="+ Lastname.getText() ,"Correo="+Email.getText(),"Contraseña="+ Password.getPassword(),"Confirmarcontraseña="+ Confirmpassword.getPassword());
+         crea.close();  
+        JOptionPane.showMessageDialog(rootPane, "Registrado con Exito"); 
+         }}catch (Exception e){ 
+      JOptionPane.showMessageDialog(rootPane, "Ya existe"); 
+          
+       }
+    }}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,6 +96,12 @@ public class Registrarse extends javax.swing.JFrame {
 
         label6.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         label6.setText("Confirme su Contraseña");
+
+        Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameActionPerformed(evt);
+            }
+        });
 
         Lastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +212,8 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
+       Crear();
+        
         String n=Name.getText();
         String a=Lastname.getText();
         String e=Email.getText();
@@ -221,6 +264,10 @@ public class Registrarse extends javax.swing.JFrame {
         panta.pack();
         panta.setLocationRelativeTo(null);
     }//GEN-LAST:event_CancelarActionPerformed
+
+    private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NameActionPerformed
 
     /**
      * @param args the command line arguments
