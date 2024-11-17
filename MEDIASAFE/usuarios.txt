@@ -1,5 +1,21 @@
-Nombre= Danilo
-Apellido= Urizar
-Correo= dan@gmail.com
-Contraseña = 12345678
+
+Nombre=ad
+Apellido=adf
+Correo=adf
+Contraseña=ads
+------------------------------------------
+Nombre=Danilo
+Apellido=urizar
+Correo=uri@gmail.com
+Contraseña=12345678
+------------------------------------------
+Nombre=Danilo
+Apellido=Urizar
+Correo=urizar1@gmail.com
+Contraseña=danilo1234
+------------------------------------------
+Nombre=Danilo
+Apellido=Isaac
+Correo=isa2@gmail.com
+Contraseña=isaac12345
 ------------------------------------------

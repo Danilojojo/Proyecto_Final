@@ -4,7 +4,10 @@
  */
 package mediasafe;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -184,78 +187,128 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-     
-        //Guardar en un archivo de blog de notas
-         String nombre = Name.getText();
-        String apellido = Lastname.getText();
-        String correo = Email.getText();
-        String password = new String(Password.getPassword());
-        String confimar = new String(Confirmpassword.getPassword());
-         
-       // Validar que los campos no estén vacíos
-         if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() ||confimar.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;}
-       
-        // Guardar los datos en el archivo
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
-            writer.write("Nombre="+ nombre); 
-            writer.newLine();
-            writer.write("Apellido="+ apellido);
-            writer.newLine();
-            writer.write("Correo="+ correo); 
-            writer.newLine();
-            writer.write("Contraseña="+ password);
-            writer.newLine();
-            writer.write("------------------------------------------");
-            writer.newLine();
-            JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
+    
+      inicializarArchivo();
 
-            // Limpiar los campos
-            Name.setText("");
-            Lastname.setText("");
-            Email.setText("");
-            Password.setText("");
-            Confirmpassword.setText("");
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-      // Campos de Registro
-          
-        
-        if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() || confimar.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor llena todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        }else {
-                if (password.length() < 8) {
-                JOptionPane.showMessageDialog(Registrarse.this, "La contraseña debe tener al menos 8 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
-                Password.setText("");
-                Confirmpassword.setText("");
-                }else{    
-            if (!password.equals(confimar)) {
-                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
-                Password.setText("");
-                Confirmpassword.setText("");
-            }
-            else{
+    // Obtener los datos de los campos
+    String nombre = Name.getText().trim();
+    String apellido = Lastname.getText().trim();
+    String correo = Email.getText().trim();
+    String password = new String(Password.getPassword()).trim();
+    String confirmar = new String(Confirmpassword.getPassword()).trim();
 
+    // Validar campos vacíos
+    if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() || confirmar.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validar formato del correo electrónico
+    if (!correo.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+        JOptionPane.showMessageDialog(this, "Por favor, introduce un correo electrónico válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validar que la contraseña tenga al menos 8 caracteres y contenga letras y números
+    if (password.length() < 8 || !password.matches(".*[a-zA-Z].*") || !password.matches(".*\\d.*")) {
+        JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 8 caracteres, incluir letras y números.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validar que las contraseñas coincidan
+    if (!password.equals(confirmar)) {
+        JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
+        Password.setText("");
+        Confirmpassword.setText("");
+        return;
+    }
+
+    // Validar que el nombre y apellido no contengan números ni caracteres especiales
+    if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+") || !apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+        JOptionPane.showMessageDialog(this, "El nombre y el apellido solo deben contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Verificar si el correo ya está registrado
+    if (correoRegistrado(correo)) {
+        JOptionPane.showMessageDialog(this, "El correo ya está registrado. Usa uno diferente.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Guardar los datos en el archivo
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
+        writer.write("Nombre=" + nombre);
+        writer.newLine();
+        writer.write("Apellido=" + apellido);
+        writer.newLine();
+        writer.write("Correo=" + correo);
+        writer.newLine();
+        writer.write("Contraseña=" + password);
+        writer.newLine();
+        writer.write("------------------------------------------");
+        writer.newLine();
+        JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
+
+        // Limpiar los campos
         Name.setText("");
         Lastname.setText("");
         Email.setText("");
         Password.setText("");
         Confirmpassword.setText("");
         
-        
-        
+        // ir a la otra ventana
         Entrada panta =new Entrada();
         panta.setVisible(true);
         panta.pack();
         panta.setLocationRelativeTo(null);
         this.dispose();
+
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+// Método para verificar si un correo ya está registrado
+private boolean correoRegistrado(String correo) {
+    File archivo = new File("usuarios.txt");
+    if (!archivo.exists()) {
+        return false; // El archivo no existe, así que no hay duplicados
+    }
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+        String linea;
+        String correoArchivo = "";
+
+        while ((linea = reader.readLine()) != null) {
+            linea = linea.trim();
+            if (linea.startsWith("Correo=")) {
+                correoArchivo = linea.split("=")[1].trim();
+                if (correoArchivo.equals(correo)) {
+                    return true; // El correo ya está registrado
+                }
             }
         }
-        }
-   
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
+    return false; // No se encontró el correo
+}
+
+// Método para inicializar el archivo si no existe o está vacío
+private void inicializarArchivo() {
+    File archivo = new File("usuarios.txt");
+    if (!archivo.exists() || archivo.length() == 0) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+            writer.write("Archivo de Usuarios");
+            writer.newLine();
+            writer.write("------------------------------------------");
+            writer.newLine();
+            JOptionPane.showMessageDialog(this, "El archivo de usuarios estaba vacío o no existía. Se ha creado uno nuevo.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al inicializar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
  
         
     }//GEN-LAST:event_RegistrarseActionPerformed
