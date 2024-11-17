@@ -1,0 +1,5 @@
+Enfermedad: diarrea
+Medicamento: ubuprofeno
+Frecuencia: Cada 3 horas
+Duración: 4 días
+-----------------------------------

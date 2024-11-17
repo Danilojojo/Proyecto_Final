@@ -25,24 +25,26 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label3" min="-2" max="-2" attributes="0"/>
-                          <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Enfe" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
-                          <Component id="medi" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
-                          <Component id="cuando" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
-                          <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="fin" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                       <Component id="agreg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="free" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="label3" min="-2" max="-2" attributes="0"/>
+                              <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="Enfe" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                              <Component id="medi" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                              <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="fin" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -80,7 +82,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="cuando" min="-2" max="-2" attributes="0"/>
+              <Component id="free" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label5" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -145,8 +147,6 @@
         <Property name="text" type="java.lang.String" value="Tiempo de Duraci&#xf3;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="cuando">
-    </Component>
     <Component class="javax.swing.JButton" name="agreg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agragar"/>
@@ -171,6 +171,11 @@
         </Property>
         <Property name="text" type="java.lang.String" value="MEDISAFE"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="free">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="freeActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
