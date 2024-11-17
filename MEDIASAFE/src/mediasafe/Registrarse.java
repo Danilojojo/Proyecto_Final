@@ -212,7 +212,8 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-       Crear();
+      
+        Crear();
         
         String n=Name.getText();
         String a=Lastname.getText();

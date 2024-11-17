@@ -4,6 +4,8 @@
  */
 package mediasafe;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author uriza
@@ -32,7 +34,7 @@ public class Entrada extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Olvidar = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        Usuario = new javax.swing.JTextField();
         label3 = new java.awt.Label();
         jButton2 = new javax.swing.JButton();
         label1 = new java.awt.Label();
@@ -60,9 +62,9 @@ public class Entrada extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                UsuarioActionPerformed(evt);
             }
         });
 
@@ -89,6 +91,12 @@ public class Entrada extends javax.swing.JFrame {
         label4.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         label4.setText("Contraseña");
 
+        jpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,7 +117,7 @@ public class Entrada extends javax.swing.JFrame {
                                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Usuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jpass, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
@@ -132,7 +140,7 @@ public class Entrada extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -182,9 +190,9 @@ public class Entrada extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton2MouseClicked
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_UsuarioActionPerformed
 
     private void OlvidarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OlvidarMouseClicked
         // TODO add your handling code here:
@@ -197,13 +205,28 @@ public class Entrada extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Paginaprincipal ingresar = new Paginaprincipal ();
+        String usuario = Usuario.getText();
+        String pass = jpass.getText();
+        
+        if(usuario.isEmpty() || pass.isEmpty() ){
+        JOptionPane.showMessageDialog(null, "Algun campo esta vacio "); 
+    }else{
+            if(usuario.equals("") && pass.equals("")){
+               Paginaprincipal ingresar = new Paginaprincipal ();
         ingresar.setVisible(true);
         ingresar.pack();
         ingresar.setLocationRelativeTo(null);
         this.dispose();
+            }
+        }
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,11 +265,11 @@ public class Entrada extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Olvidar;
+    private javax.swing.JTextField Usuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPasswordField jpass;
     private java.awt.Label label1;
     private java.awt.Label label3;

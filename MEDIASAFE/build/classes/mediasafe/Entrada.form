@@ -59,7 +59,7 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jTextField2" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                                              <Component id="Usuario" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                                               <Component id="jpass" min="-2" pref="153" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -94,7 +94,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                              <Component id="Usuario" min="-2" max="-2" attributes="0"/>
                               <Component id="label1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -153,9 +153,9 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="OlvidarMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="Usuario">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UsuarioActionPerformed"/>
           </Events>
         </Component>
         <Component class="java.awt.Label" name="label3">
@@ -198,6 +198,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jpass">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jpassActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
