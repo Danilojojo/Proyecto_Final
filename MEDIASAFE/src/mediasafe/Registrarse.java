@@ -5,7 +5,6 @@
 package mediasafe;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Formatter;
 import javax.swing.JOptionPane;
 
