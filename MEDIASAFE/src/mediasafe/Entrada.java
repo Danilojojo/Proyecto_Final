@@ -4,7 +4,12 @@
  */
 package mediasafe;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -16,10 +21,8 @@ public class Entrada extends javax.swing.JFrame {
      * Creates new form Entrada
      */
     public Entrada() {
-        initComponents();
-        
-       
-    }
+        initComponents();}
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +34,7 @@ public class Entrada extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        login = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Olvidar = new javax.swing.JLabel();
         Usuario = new javax.swing.JTextField();
@@ -40,14 +43,15 @@ public class Entrada extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         label4 = new java.awt.Label();
         jpass = new javax.swing.JPasswordField();
+        Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        login.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        login.setText("Ingresar");
+        login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginActionPerformed(evt);
             }
         });
 
@@ -97,10 +101,21 @@ public class Entrada extends javax.swing.JFrame {
             }
         });
 
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Olvidar)
+                .addGap(57, 57, 57))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -110,7 +125,7 @@ public class Entrada extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
+                                    .addComponent(login)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,17 +139,18 @@ public class Entrada extends javax.swing.JFrame {
                                 .addComponent(jButton2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(176, 176, 176)
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Salir)))
                 .addContainerGap(37, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Olvidar)
-                .addGap(57, 57, 57))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(15, 15, 15)
+                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -149,13 +165,13 @@ public class Entrada extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
-                            .addComponent(jButton1)))
+                            .addComponent(login)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Olvidar)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,32 +219,63 @@ public class Entrada extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_OlvidarMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        String usuario = Usuario.getText();
-        String pass = jpass.getText();
-        
-        if(usuario.isEmpty() || pass.isEmpty() ){
-        JOptionPane.showMessageDialog(null, "Algun campo esta vacio "); 
-    }else{
-            if(usuario.equals("") && pass.equals("")){
-               Paginaprincipal ingresar = new Paginaprincipal ();
+     String correo = Usuario.getText();
+    String password = new String(jpass.getPassword());
+
+    // Validar campos vacíos
+    if (correo.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validar credenciales desde el archivo
+    if (validarCredenciales(correo, password)) {
+        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
+
+        // Abrir la siguiente ventana
+        Paginaprincipal ingresar = new Paginaprincipal();
         ingresar.setVisible(true);
         ingresar.pack();
         ingresar.setLocationRelativeTo(null);
-        this.dispose();
-            }else{
-              JOptionPane.showMessageDialog(null, "Contraseña o Usuario Incorrecto ");  
+        this.dispose(); // Cierra la ventana actual
+    } else {
+        JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+private boolean validarCredenciales(String correo, String password) {
+    File archivo = new File("usuarios.txt");
+    if (!archivo.exists()) {
+        JOptionPane.showMessageDialog(this, "Archivo de usuarios no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+        String linea;
+        while ((linea = reader.readLine()) != null) {
+            String[] datos = linea.split(","); // Suponiendo: Nombre,Apellido,Correo,Contraseña
+            if (datos[2].equals(correo) && datos[3].equals(password)) {
+                return true; // Credenciales válidas
             }
         }
-        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    return false; // Credenciales no válidas
+
+    }//GEN-LAST:event_loginActionPerformed
 
     private void jpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jpassActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose(); 
+    }//GEN-LAST:event_SalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,8 +314,8 @@ public class Entrada extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Olvidar;
+    private javax.swing.JButton Salir;
     private javax.swing.JTextField Usuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -276,5 +323,6 @@ public class Entrada extends javax.swing.JFrame {
     private java.awt.Label label1;
     private java.awt.Label label3;
     private java.awt.Label label4;
+    private javax.swing.JButton login;
     // End of variables declaration//GEN-END:variables
 }

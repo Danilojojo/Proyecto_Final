@@ -1,1 +1,5 @@
-Danilo,Isaac ,danilo@gmail.com,12345678
+Nombre= Danilo
+Apellido= Urizar
+Correo= urdan@gmail.com
+Contraseña = 12345678
+------------------------------------------

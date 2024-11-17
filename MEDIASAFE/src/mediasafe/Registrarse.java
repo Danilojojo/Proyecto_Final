@@ -5,13 +5,10 @@
 package mediasafe;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Formatter;
-import java.util.regex.Pattern;
+
 import javax.swing.JOptionPane;
-import mediasafe.Entrada;
 
 /**
  *
@@ -188,7 +185,7 @@ public class Registrarse extends javax.swing.JFrame {
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
      
-//Guardar en un archivo de blog de notas
+        //Guardar en un archivo de blog de notas
          String nombre = Name.getText();
         String apellido = Lastname.getText();
         String correo = Email.getText();
@@ -198,14 +195,19 @@ public class Registrarse extends javax.swing.JFrame {
        // Validar que los campos no estén vacíos
          if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() ||confimar.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-         // Validar la contraseña
+            return;}
        
         // Guardar los datos en el archivo
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
-            writer.write(nombre + "," + apellido + "," + correo + "," + password);
+            writer.write("Nombre= "+ nombre); 
+            writer.newLine();
+            writer.write("Apellido= "+ apellido);
+            writer.newLine();
+            writer.write("Correo= "+ correo); 
+            writer.newLine();
+            writer.write("Contraseña = "+ password);
+            writer.newLine();
+            writer.write("------------------------------------------");
             writer.newLine();
             JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
 
@@ -215,36 +217,30 @@ public class Registrarse extends javax.swing.JFrame {
             Email.setText("");
             Password.setText("");
             Confirmpassword.setText("");
-
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
       // Campos de Registro
-           
-     String n=Name.getText();
-        String a=Lastname.getText();
-        String e=Email.getText();
-        String p = new String(Password.getPassword());
-        String c = new String(Confirmpassword.getPassword());
+          
         
-        if (n.isEmpty() || a.isEmpty() || e.isEmpty() || p.isEmpty() || c.isEmpty()) {
+        if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() || confimar.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor llena todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }else {
-                if (p.length() < 8) {
+                if (password.length() < 8) {
                 JOptionPane.showMessageDialog(Registrarse.this, "La contraseña debe tener al menos 8 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
                 Password.setText("");
                 Confirmpassword.setText("");
                 }else{    
-            if (!p.equals(c)) {
+            if (!password.equals(confimar)) {
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
                 Password.setText("");
                 Confirmpassword.setText("");
             }
             else{
-        System.out.println("Nombre Completo: " + n+" "+a);
-        System.out.println("Correo electrónico: " + e);
-        System.out.println("Contraseña: " + p);
-        System.out.println("Confirmar contraseña: " + c);
+        System.out.println("Nombre Completo: " + nombre+" "+apellido);
+        System.out.println("Correo electrónico: " + correo);
+        System.out.println("Contraseña: " + password);
+        System.out.println("Confirmar contraseña: " + confimar);
 
         Name.setText("");
         Lastname.setText("");
@@ -252,12 +248,13 @@ public class Registrarse extends javax.swing.JFrame {
         Password.setText("");
         Confirmpassword.setText("");
         
-        this.dispose();
+        
         
         Entrada panta =new Entrada();
         panta.setVisible(true);
         panta.pack();
         panta.setLocationRelativeTo(null);
+        this.dispose();
             }
         }
         }
@@ -273,6 +270,7 @@ public class Registrarse extends javax.swing.JFrame {
         panta.setVisible(true);
         panta.pack();
         panta.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
