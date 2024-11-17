@@ -4,6 +4,14 @@
  */
 package mediasafe;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -13,15 +21,68 @@ public class Paginaprincipal extends javax.swing.JFrame {
     /**
      * Creates new form Paginaprincipal
      */
+  
+    private DefaultTableModel modelo; // Modelo para la tabla
+    private ArrayList<Medicamento> medicamentos; // Lista para almacenar medicamentos
+
     public Paginaprincipal() {
-        initComponents();
-    
+        initComponents(); // Método generado por NetBeans que configura el diseño
+        this.setExtendedState(this.MAXIMIZED_BOTH);
+
+        // Inicializar lista y modelo
+        medicamentos = new ArrayList<>();
+        
+        // Configurar el modelo de tabla no editable
+        modelo = new DefaultTableModel(new String[]{"Enfermedad", "Medicamento", "Frecuencia", "Duración"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Evitar que las celdas sean editables
+            }
+        };
+        
+        // Asignar el modelo configurado a la tabla
+        ver.setModel(modelo);
+
+        // Llamar al método para cargar los datos en la tabla
+        cargarDatosEnTablaDesdeArchivo();
     }
-    
 
+    // Método para cargar los datos en la tabla desde un archivo
+    private void cargarDatosEnTablaDesdeArchivo() {
+        // Limpiar la lista de medicamentos para asegurarse de que empieza en la posición 0
+        medicamentos.clear();
+        modelo.setRowCount(0); // Limpiar la tabla
 
+        // Ruta del archivo
+        File archivo = new File("Medicamentos.txt");
+        if (!archivo.exists()) {
+            JOptionPane.showMessageDialog(this, "El archivo 'Medicamentos.txt' no existe.");
+            return;
+        }
 
-    
+        // Leer el contenido del archivo
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                // Leer datos en bloques separados por líneas
+                if (linea.startsWith("Enfermedad: ")) {
+                    String enfermedad = linea.replace("Enfermedad: ", "").trim();
+                    String medicamento = br.readLine().replace("Medicamento: ", "").trim();
+                    String frecuencia = br.readLine().replace("Frecuencia: ", "").trim();
+                    String duracion = br.readLine().replace("Duración: ", "").trim();
+
+                    // Agregar los datos directamente al modelo de la tabla
+                    modelo.addRow(new Object[]{enfermedad, medicamento, frecuencia, duracion});
+
+                    // Saltar línea separadora (opcional)
+                    br.readLine(); // Línea que contiene "-----------------------------------"
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Hubo un error al leer el archivo.");
+        }
+    }
 
 
     /**
@@ -33,85 +94,20 @@ public class Paginaprincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        barra = new javax.swing.JPanel();
-        Despliego = new javax.swing.JLabel();
-        Lateral = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ver = new javax.swing.JTable();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Despliego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mediasafe/igual.png"))); // NOI18N
-        Despliego.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DespliegoMouseClicked(evt);
-            }
-        });
-
-        jButton1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jButton1.setText("Horario de Medicina");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jButton2.setText("Ingresar Medicamento");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jButton3.setText("AYUDA");
-
-        jButton4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jButton4.setText("Salir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout LateralLayout = new javax.swing.GroupLayout(Lateral);
-        Lateral.setLayout(LateralLayout);
-        LateralLayout.setHorizontalGroup(
-            LateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LateralLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(LateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LateralLayout.createSequentialGroup()
-                        .addGroup(LateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4))
-                        .addGap(66, 66, 66))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LateralLayout.createSequentialGroup()
-                        .addGroup(LateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addGap(14, 14, 14))))
-        );
-        LateralLayout.setVerticalGroup(
-            LateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LateralLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
+        jButton1.setText("jButton1");
 
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 20)); // NOI18N
         jLabel1.setText("Proximo Evento");
@@ -129,114 +125,117 @@ public class Paginaprincipal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(ver);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(230, 230, 230)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
-        barra.setLayout(barraLayout);
-        barraLayout.setHorizontalGroup(
-            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(barraLayout.createSequentialGroup()
-                .addGroup(barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(barraLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Lateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(barraLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(Despliego)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        barraLayout.setVerticalGroup(
-            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(barraLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(Despliego)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Lateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(barraLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mediasafe/igual.png"))); // NOI18N
+        jMenu3.setToolTipText("");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+
+        jMenu1.setText("Ingresar Nuevo Medicamento");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenu3.add(jMenu1);
+
+        jMenu2.setText("Ayuda");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenu3.add(jMenu2);
+
+        jMenu4.setText("Salir");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
+        jMenu3.add(jMenu4);
+
+        jMenuBar2.add(jMenu3);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DespliegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DespliegoMouseClicked
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        
 
-    }//GEN-LAST:event_DespliegoMouseClicked
+    }//GEN-LAST:event_jMenu3MouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
         Entrada salir = new Entrada();
         salir.setVisible(true);
         salir.pack();
         salir.setLocationRelativeTo(null);
         this.dispose();
+    }//GEN-LAST:event_jMenu4MouseClicked
 
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-                Medicina salir = new Medicina();
+        Medicina salir = new Medicina();
         salir.setVisible(true);
         salir.pack();
         salir.setLocationRelativeTo(null);
         this.dispose();
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jMenu1MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
-         Horario hora = new Horario();
-        hora.setVisible(true);
-        hora.pack();
-        hora.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+                 JOptionPane.showMessageDialog(
+        this, // Componente padre (el JFrame actual)
+        "Puede llamarnos y contactarse con nosotros al 123-456-7890.\n" +
+        "O envíe un correo a soporte@empresa.com.", // Mensaje
+        "Ayuda - Contacto", // Título del cuadro de diálogo
+        JOptionPane.INFORMATION_MESSAGE // Tipo de mensaje (informativo)
+    ); 
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -274,15 +273,14 @@ public class Paginaprincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Despliego;
-    private javax.swing.JPanel Lateral;
-    private javax.swing.JPanel barra;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable ver;
     // End of variables declaration//GEN-END:variables

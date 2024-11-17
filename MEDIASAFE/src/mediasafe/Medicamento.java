@@ -13,7 +13,7 @@ import java.time.LocalTime;
 public class Medicamento {
      String nombre;
     String Dosis;
-    LocalTime Horatoma;
+    LocalTime frecuenacia;
     String Final;
 
     public Medicamento() {
@@ -35,13 +35,14 @@ public class Medicamento {
         this.Dosis = Dosis;
     }
 
-    public LocalTime getHoratoma() {
-        return Horatoma;
+    public LocalTime getFrecuenacia() {
+        return frecuenacia;
     }
 
-    public void setHoratoma(LocalTime Horatoma) {
-        this.Horatoma = Horatoma;
+    public void setFrecuenacia(LocalTime frecuenacia) {
+        this.frecuenacia = frecuenacia;
     }
+ 
 
     public String getFinal() {
         return Final;

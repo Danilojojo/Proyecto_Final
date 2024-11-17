@@ -1,0 +1,15 @@
+Enfermedad: sifilis
+Medicamento: muerte
+Frecuencia: Cada 2 horas
+Duración: 100 días
+-----------------------------------
+Enfermedad: sifilis
+Medicamento: a
+Frecuencia: Cada 3 horas
+Duración: 67 días
+-----------------------------------
+Enfermedad: ella
+Medicamento: su amor
+Frecuencia: Cada 1 horas
+Duración: 18 días
+-----------------------------------

@@ -5,10 +5,9 @@
 package mediasafe;
 
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -214,13 +213,9 @@ public class Medicina extends javax.swing.JFrame {
         return;
     }
 
-    // Crear un nombre único para el archivo
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-    String fecha = sdf.format(new Date());
-    String nombreArchivo = "Medicamento_" + fecha + ".txt";
 
     // Guardar los datos en un archivo
-    boolean guardado = guardarDatosEnArchivo(nombreArchivo, enfermedad, medicamento, frecuenciaEnHoras, duracionEnDias);
+    boolean guardado = guardarDatosEnArchivo(enfermedad, medicamento, frecuenciaEnHoras, duracionEnDias);
     if (guardado) {
         // Limpiar los campos después de guardar
         Enfe.setText("");
@@ -245,13 +240,19 @@ public class Medicina extends javax.swing.JFrame {
 }
 
 // Método para guardar datos en un archivo
-private boolean guardarDatosEnArchivo(String nombreArchivo, String enfermedad, String medicamento, int frecuenciaEnHoras, int duracionEnDias) {
-    try (FileWriter writer = new FileWriter(nombreArchivo)) {
-        writer.write("Enfermedad: " + enfermedad + "\n");
-        writer.write("Medicamento: " + medicamento + "\n");
-        writer.write("Frecuencia: Cada " + frecuenciaEnHoras + " horas\n");
-        writer.write("Duración: " + duracionEnDias + " días\n");
-        writer.write("-----------------------------------\n");
+private boolean guardarDatosEnArchivo( String enfermedad, String medicamento, int frecuenciaEnHoras, int duracionEnDias) {
+    try {
+        // Crear o abrir el archivo Medicamentos.txt en modo "append" (agregar contenido al final)
+        File archivo = new File("Medicamentos.txt");
+
+        try (FileWriter writer = new FileWriter(archivo, true)) { // "true" para agregar sin sobrescribir
+            writer.write("Enfermedad: " + enfermedad + "\n");
+            writer.write("Medicamento: " + medicamento + "\n");
+            writer.write("Frecuencia: Cada " + frecuenciaEnHoras + " horas\n");
+            writer.write("Duración: " + duracionEnDias + " días\n");
+            writer.write("-----------------------------------\n");
+        }
+
         return true; // Indicar que se guardó correctamente
     } catch (IOException e) {
         e.printStackTrace();
