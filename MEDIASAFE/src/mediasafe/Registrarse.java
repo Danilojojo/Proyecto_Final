@@ -199,13 +199,13 @@ public class Registrarse extends javax.swing.JFrame {
        
         // Guardar los datos en el archivo
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
-            writer.write("Nombre= "+ nombre); 
+            writer.write("Nombre="+ nombre); 
             writer.newLine();
-            writer.write("Apellido= "+ apellido);
+            writer.write("Apellido="+ apellido);
             writer.newLine();
-            writer.write("Correo= "+ correo); 
+            writer.write("Correo="+ correo); 
             writer.newLine();
-            writer.write("Contraseña = "+ password);
+            writer.write("Contraseña="+ password);
             writer.newLine();
             writer.write("------------------------------------------");
             writer.newLine();
@@ -237,10 +237,6 @@ public class Registrarse extends javax.swing.JFrame {
                 Confirmpassword.setText("");
             }
             else{
-        System.out.println("Nombre Completo: " + nombre+" "+apellido);
-        System.out.println("Correo electrónico: " + correo);
-        System.out.println("Contraseña: " + password);
-        System.out.println("Confirmar contraseña: " + confimar);
 
         Name.setText("");
         Lastname.setText("");

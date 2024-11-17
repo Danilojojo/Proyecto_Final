@@ -1,5 +1,5 @@
 Nombre= Danilo
 Apellido= Urizar
-Correo= urdan@gmail.com
+Correo= dan@gmail.com
 Contraseña = 12345678
 ------------------------------------------

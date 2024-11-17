@@ -254,10 +254,30 @@ private boolean validarCredenciales(String correo, String password) {
 
     try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
         String linea;
+      String nombre = "", apellido = "", correoArchivo = "", passwordArchivo = "";
+
         while ((linea = reader.readLine()) != null) {
-            String[] datos = linea.split(","); // Suponiendo: Nombre,Apellido,Correo,Contraseña
-            if (datos[2].equals(correo) && datos[3].equals(password)) {
-                return true; // Credenciales válidas
+            linea = linea.trim(); // Elimina espacios en blanco al inicio y al final
+
+            if (linea.startsWith("Nombre=")) {
+                nombre = linea.split("=")[1].trim();
+            } else if (linea.startsWith("Apellido=")) {
+                apellido = linea.split("=")[1].trim();
+            } else if (linea.startsWith("Correo=")) {
+                correoArchivo = linea.split("=")[1].trim();
+            } else if (linea.startsWith("Contraseña=")) {
+                passwordArchivo = linea.split("=")[1].trim();
+            }
+
+            // Si encontramos una línea de separación o fin de usuario
+            if (linea.startsWith("---")) {
+                // Validar credenciales
+                if (correo.equals(correoArchivo) && password.equals(passwordArchivo)) {
+                    return true; // Credenciales válidas
+                }
+
+                // Reiniciar variables para el próximo usuario
+                nombre = apellido = correoArchivo = passwordArchivo = "";
             }
         }
     } catch (IOException e) {
