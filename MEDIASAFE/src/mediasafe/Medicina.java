@@ -181,10 +181,27 @@ public class Medicina extends javax.swing.JFrame {
         return;
     }
 
+    // Validar que la frecuencia sea un número
+    int frecuenciaEnHoras;
+    try {
+        frecuenciaEnHoras = Integer.parseInt(frecuencia); // Convertir frecuencia a número
+        if (frecuenciaEnHoras <= 0) {
+            JOptionPane.showMessageDialog(null, "La frecuencia debe ser mayor que 0.");
+            return;
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido para la frecuencia.");
+        return;
+    }
+
     // Validar que la duración sea un número
     int duracionEnDias;
     try {
-        duracionEnDias = Integer.parseInt(duracion); // Convertir a número
+        duracionEnDias = Integer.parseInt(duracion); // Convertir duración a número
+        if (duracionEnDias <= 0) {
+            JOptionPane.showMessageDialog(null, "La duración debe ser mayor que 0.");
+            return;
+        }
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido para la duración.");
         return;
@@ -196,7 +213,7 @@ public class Medicina extends javax.swing.JFrame {
     String nombreArchivo = "Medicamento_" + fecha + ".txt";
 
     // Guardar los datos en un archivo
-    boolean guardado = guardarDatosEnArchivo(nombreArchivo, enfermedad, medicamento, frecuencia, duracionEnDias);
+    boolean guardado = guardarDatosEnArchivo(nombreArchivo, enfermedad, medicamento, frecuenciaEnHoras, duracionEnDias);
     if (guardado) {
         // Limpiar los campos después de guardar
         Enfe.setText("");
@@ -221,13 +238,13 @@ public class Medicina extends javax.swing.JFrame {
 }
 
 // Método para guardar datos en un archivo
-private boolean guardarDatosEnArchivo(String nombreArchivo, String enfermedad, String medicamento, String frecuencia, int duracionEnDias) {
+private boolean guardarDatosEnArchivo(String nombreArchivo, String enfermedad, String medicamento, int frecuenciaEnHoras, int duracionEnDias) {
     try (FileWriter writer = new FileWriter(nombreArchivo)) {
         writer.write("Enfermedad: " + enfermedad + "\n");
         writer.write("Medicamento: " + medicamento + "\n");
-        writer.write("Frecuencia: " + frecuencia + "\n");
+        writer.write("Frecuencia: Cada " + frecuenciaEnHoras + " horas\n");
         writer.write("Duración: " + duracionEnDias + " días\n");
-        writer.write("-----------------------------------");
+        writer.write("-----------------------------------\n");
         return true; // Indicar que se guardó correctamente
     } catch (IOException e) {
         e.printStackTrace();
