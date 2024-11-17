@@ -8,7 +8,7 @@ package mediasafe;
  *
  * @author uriza
  */
-public class MEDIASAFE {
+public class MEDISAFE {
 
     /**
      * @param args the command line arguments
