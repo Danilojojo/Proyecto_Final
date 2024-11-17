@@ -32,10 +32,10 @@
                           <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="Name" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
-                          <Component id="Email" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
-                          <Component id="Password" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Component id="medi" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Component id="cuando" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                           <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Lastname" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Component id="fin" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -76,15 +76,15 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="Email" min="-2" max="-2" attributes="0"/>
+              <Component id="medi" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Password" min="-2" max="-2" attributes="0"/>
+              <Component id="cuando" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label5" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-              <Component id="Lastname" min="-2" max="-2" attributes="0"/>
+              <Component id="fin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Registrarse" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -122,12 +122,12 @@
         <Property name="text" type="java.lang.String" value="Medicamento"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Lastname">
+    <Component class="javax.swing.JTextField" name="fin">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LastnameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="finActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="Email">
+    <Component class="javax.swing.JTextField" name="medi">
     </Component>
     <Component class="java.awt.Label" name="label4">
       <Properties>
@@ -145,7 +145,7 @@
         <Property name="text" type="java.lang.String" value="Tiempo de Duraci&#xf3;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="Password">
+    <Component class="javax.swing.JPasswordField" name="cuando">
     </Component>
     <Component class="javax.swing.JButton" name="Registrarse">
       <Properties>

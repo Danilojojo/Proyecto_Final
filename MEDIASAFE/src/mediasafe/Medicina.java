@@ -4,6 +4,8 @@
  */
 package mediasafe;
 
+
+
 /**
  *
  * @author uriza
@@ -13,9 +15,15 @@ public class Medicina extends javax.swing.JFrame {
     /**
      * Creates new form Medicina
      */
+    
+
     public Medicina() {
+    
         initComponents();
+   
+
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,11 +38,11 @@ public class Medicina extends javax.swing.JFrame {
         Name = new javax.swing.JTextField();
         label3 = new java.awt.Label();
         label1 = new java.awt.Label();
-        Lastname = new javax.swing.JTextField();
-        Email = new javax.swing.JTextField();
+        fin = new javax.swing.JTextField();
+        medi = new javax.swing.JTextField();
         label4 = new java.awt.Label();
         label5 = new java.awt.Label();
-        Password = new javax.swing.JPasswordField();
+        cuando = new javax.swing.JPasswordField();
         Registrarse = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
         label7 = new java.awt.Label();
@@ -50,9 +58,9 @@ public class Medicina extends javax.swing.JFrame {
         label1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         label1.setText("Medicamento");
 
-        Lastname.addActionListener(new java.awt.event.ActionListener() {
+        fin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LastnameActionPerformed(evt);
+                finActionPerformed(evt);
             }
         });
 
@@ -93,10 +101,10 @@ public class Medicina extends javax.swing.JFrame {
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(medi, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cuando, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lastname, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(fin, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(Registrarse)
@@ -127,15 +135,15 @@ public class Medicina extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(medi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cuando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(Lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Registrarse)
@@ -146,17 +154,13 @@ public class Medicina extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LastnameActionPerformed
+    private void finActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LastnameActionPerformed
+    }//GEN-LAST:event_finActionPerformed
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-          Paginaprincipal aceptar = new Paginaprincipal();
-        aceptar.setVisible(true);
-        aceptar.pack();
-        aceptar.setLocationRelativeTo(null);
-        this.dispose();
+   
 
     }//GEN-LAST:event_RegistrarseActionPerformed
 
@@ -198,23 +202,23 @@ public class Medicina extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Medicina().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
-    private javax.swing.JTextField Email;
-    private javax.swing.JTextField Lastname;
     private javax.swing.JTextField Name;
-    private javax.swing.JPasswordField Password;
     private javax.swing.JButton Registrarse;
+    private javax.swing.JPasswordField cuando;
+    private javax.swing.JTextField fin;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
     private java.awt.Label label7;
+    private javax.swing.JTextField medi;
     // End of variables declaration//GEN-END:variables
 }
