@@ -4,6 +4,9 @@
  */
 package mediasafe;
 
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author uriza
@@ -28,8 +31,6 @@ public class Codigo extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
 
@@ -43,15 +44,12 @@ public class Codigo extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Siguiente");
+        jButton2.setText("Generar Codigo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
-        jLabel1.setText("Ingreselo aqui");
 
         label1.setFont(new java.awt.Font("Georgia", 0, 20)); // NOI18N
         label1.setText("Sele Envió un Código a su Correo Electronico");
@@ -69,21 +67,17 @@ public class Codigo extends javax.swing.JFrame {
                         .addGap(70, 70, 70)
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
                         .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 59, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(121, 121, 121))
+                .addGap(253, 253, 253))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,15 +86,11 @@ public class Codigo extends javax.swing.JFrame {
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(111, 111, 111))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(58, 58, 58)
+                .addComponent(jButton1)
+                .addGap(107, 107, 107))
         );
 
         pack();
@@ -118,11 +108,27 @@ public class Codigo extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         Random rand = new Random();
+    String codigoGenerado = String.format("%04d", rand.nextInt(10000)); // Código aleatorio de 4 dígitos
+
+    // Mostrar el código generado en un cuadro de mensaje
+    JOptionPane.showMessageDialog(this, "Código generado: " + codigoGenerado);
+
+    // Mostrar el cuadro de texto donde el usuario puede ingresar el código
+    String codigoIngresado = JOptionPane.showInputDialog(this, "Ingrese el código generado:");
+
+    // Validar si el código ingresado es correcto
+    if (codigoIngresado != null && codigoIngresado.equals(codigoGenerado)) {
+        // Si el código es correcto, abrir la siguiente ventana
         Nuevosdatos siguiente = new Nuevosdatos();
         siguiente.setVisible(true);
         siguiente.pack();
         siguiente.setLocationRelativeTo(null);
-        this.dispose();
+        this.dispose(); // Cierra la ventana actual
+    } else {
+        // Si el código es incorrecto, mostrar un mensaje de error
+        JOptionPane.showMessageDialog(this, "Código incorrecto. Intenta nuevamente.");
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -163,8 +169,6 @@ public class Codigo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables

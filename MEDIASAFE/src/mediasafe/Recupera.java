@@ -4,8 +4,13 @@
  */
 package mediasafe;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -21,7 +26,42 @@ public class Recupera extends javax.swing.JFrame {
    
    
     }
-
+public boolean verificarCorreo(String email) {
+    try {
+        // Archivo donde están almacenados los usuarios (el "blog de notas")
+        File archivo = new File("usuarios.txt");
+        
+        // Verificar si el archivo existe
+        if (!archivo.exists()) {
+            System.out.println("El archivo de usuarios no existe.");
+            return false;
+        }
+        
+        BufferedReader reader = new BufferedReader(new FileReader(archivo));
+        String linea;
+        String correo = null;  // Variable para almacenar el correo encontrado en cada bloque de datos
+        
+        // Leer el archivo línea por línea
+        while ((linea = reader.readLine()) != null) {
+            // Verificar si la línea contiene el correo
+            if (linea.startsWith("Correo")) {
+                correo = linea.split("=")[1].trim();  // Obtener el correo después de "Correo="
+                
+                // Si el correo coincide con el ingresado, retornar verdadero
+                if (correo.equals(email)) {
+                    reader.close();  // Cerrar el lector
+                    return true;  // Correo encontrado
+                }
+            }
+        }
+        
+        reader.close();  // Cerrar el lector si no se encuentra el correo
+    } catch (IOException e) {
+        e.printStackTrace();  // Imprimir el error en consola para depuración
+    }    
+    
+    return false;  // Correo no encontrado
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,12 +167,24 @@ public class Recupera extends javax.swing.JFrame {
 
     private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
         // TODO add your handling code here:
-        
-         Codigo siguiente = new Codigo();
+     // Obtener el correo ingresado
+    String email = Correo.getText();  // Suponiendo que 'emailTextField' es el nombre de tu campo de texto para el correo
+    
+    // Verificar si el correo existe en el archivo
+    if (verificarCorreo(email)) {
+        // Si el correo es válido, mostrar un mensaje o continuar con el proceso
+        JOptionPane.showMessageDialog(this, "Correo encontrado, puedes continuar con la recuperación.");
+
+        // Ahora se abre la ventana de recuperación de código
+        Codigo siguiente = new Codigo();  // Suponiendo que 'Codigo' es la ventana a la que deseas ir
         siguiente.setVisible(true);
         siguiente.pack();
         siguiente.setLocationRelativeTo(null);
-        this.dispose();
+        this.dispose();  // Cerrar la ventana actual si deseas
+    } else {
+        // Si el correo no es válido, mostrar un mensaje de error
+        JOptionPane.showMessageDialog(this, "Correo no encontrado. Por favor verifica.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_SiguienteActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
