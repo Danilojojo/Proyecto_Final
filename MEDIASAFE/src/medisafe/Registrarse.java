@@ -245,6 +245,8 @@ public class Registrarse extends javax.swing.JFrame {
         writer.newLine();
         writer.write("Contraseña:" + password);
         writer.newLine();
+        writer.write("--------------------------------------");
+        writer.newLine();
         JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
 
         // Limpiar los campos

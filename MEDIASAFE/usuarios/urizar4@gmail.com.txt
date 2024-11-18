@@ -1,9 +1,0 @@
-Nombre:Danilo
-Apellido:Urizar
-Correo:urizar4@gmail.com
-Contraseña:urizar12345
-Enfermedad: sifiles
-Medicamento: por ella
-Frecuencia: Cada 12 horas
-Duración: 300 días
------------------------------------
