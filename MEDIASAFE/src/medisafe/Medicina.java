@@ -27,6 +27,8 @@ public class Medicina extends javax.swing.JFrame {
     public Medicina() {
     
         initComponents();
+    setResizable(false); // Desactiva el redimensionamiento
+        
     }
   private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int frecuenciaEnHoras, int duracionEnDias) {
     // Obtener el correo del usuario actual desde la sesión

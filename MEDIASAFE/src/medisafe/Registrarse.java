@@ -25,6 +25,8 @@ public class Registrarse extends javax.swing.JFrame {
     
     public Registrarse() {
         initComponents();
+        setResizable(false); // Desactiva el redimensionamiento
+       
     }
    
 

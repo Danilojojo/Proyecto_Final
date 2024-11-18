@@ -21,7 +21,10 @@ public class Entrada extends javax.swing.JFrame {
      * Creates new form Entrada
      */
     public Entrada() {
-        initComponents();}
+        initComponents();
+    setResizable(false); // Desactiva el redimensionamiento
+        setLocationRelativeTo(null);
+    }
     
     private boolean validarCredenciales(String correo, String password) {
     // Obtener la carpeta principal donde se almacenan los archivos de los usuarios

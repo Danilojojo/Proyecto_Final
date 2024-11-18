@@ -46,6 +46,9 @@ public class Paginaprincipal extends javax.swing.JFrame {
 
         // Llamar al método para cargar los datos en la tabla
         cargarDatosEnTablaDesdeArchivo();
+   
+    setResizable(false); // Desactiva el redimensionamiento
+      
     }
 
     private void cargarDatosEnTablaDesdeArchivo() {
