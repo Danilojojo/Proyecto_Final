@@ -1,0 +1,10 @@
+Nombre:Danilo
+Apellido:Urizar
+Correo:urizardanilo8@gmail.com
+Contraseña:urizar12345
+--------------------------------------
+Enfermedad: Amor
+Medicamento: Ella(CP)
+Frecuencia: Cada 1 horas
+Duración: 30000 días
+-----------------------------------
