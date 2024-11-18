@@ -187,8 +187,7 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-    
-      inicializarArchivo();
+  
 
     // Obtener los datos de los campos
     String nombre = Name.getText().trim();
@@ -229,23 +228,22 @@ public class Registrarse extends javax.swing.JFrame {
         return;
     }
 
-    // Verificar si el correo ya está registrado
-    if (correoRegistrado(correo)) {
-        JOptionPane.showMessageDialog(this, "El correo ya está registrado. Usa uno diferente.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
+    // Crear la carpeta si no existe
+    File carpeta = new File("usuarios");
+    if (!carpeta.exists()) {
+        carpeta.mkdir(); // Crea la carpeta
     }
 
-    // Guardar los datos en el archivo
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.txt", true))) {
-        writer.write("Nombre=" + nombre);
+    // Guardar cada usuario en un archivo individual
+    File archivoUsuario = new File(carpeta, correo + ".txt"); // El nombre del archivo es el correo
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoUsuario))) {
+        writer.write("Nombre: " + nombre);
         writer.newLine();
-        writer.write("Apellido=" + apellido);
+        writer.write("Apellido: " + apellido);
         writer.newLine();
-        writer.write("Correo=" + correo);
+        writer.write("Correo: " + correo);
         writer.newLine();
-        writer.write("Contraseña=" + password);
-        writer.newLine();
-        writer.write("------------------------------------------");
+        writer.write("Contraseña: " + password);
         writer.newLine();
         JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
 
@@ -255,9 +253,9 @@ public class Registrarse extends javax.swing.JFrame {
         Email.setText("");
         Password.setText("");
         Confirmpassword.setText("");
-        
-        // ir a la otra ventana
-        Entrada panta =new Entrada();
+
+        // Ir a la otra ventana
+        Entrada panta = new Entrada();
         panta.setVisible(true);
         panta.pack();
         panta.setLocationRelativeTo(null);
@@ -266,50 +264,7 @@ public class Registrarse extends javax.swing.JFrame {
     } catch (IOException ex) {
         JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
 
-// Método para verificar si un correo ya está registrado
-private boolean correoRegistrado(String correo) {
-    File archivo = new File("usuarios.txt");
-    if (!archivo.exists()) {
-        return false; // El archivo no existe, así que no hay duplicados
-    }
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
-        String linea;
-        String correoArchivo = "";
-
-        while ((linea = reader.readLine()) != null) {
-            linea = linea.trim();
-            if (linea.startsWith("Correo=")) {
-                correoArchivo = linea.split("=")[1].trim();
-                if (correoArchivo.equals(correo)) {
-                    return true; // El correo ya está registrado
-                }
-            }
-        }
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-    return false; // No se encontró el correo
-}
-
-// Método para inicializar el archivo si no existe o está vacío
-private void inicializarArchivo() {
-    File archivo = new File("usuarios.txt");
-    if (!archivo.exists() || archivo.length() == 0) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
-            writer.write("Archivo de Usuarios");
-            writer.newLine();
-            writer.write("------------------------------------------");
-            writer.newLine();
-            JOptionPane.showMessageDialog(this, "El archivo de usuarios estaba vacío o no existía. Se ha creado uno nuevo.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al inicializar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
- 
         
     }//GEN-LAST:event_RegistrarseActionPerformed
 
