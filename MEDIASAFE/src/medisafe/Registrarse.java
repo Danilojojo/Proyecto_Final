@@ -257,10 +257,10 @@ public class Registrarse extends javax.swing.JFrame {
         Confirmpassword.setText("");
 
         // Ir a la otra ventana
-        Entrada panta = new Entrada();
-        panta.setVisible(true);
-        panta.pack();
-        panta.setLocationRelativeTo(null);
+        Entrada inicio = new Entrada();
+        inicio.setVisible(true);
+        inicio.pack();
+        inicio.setLocationRelativeTo(null);
         this.dispose();
 
     } catch (IOException ex) {
@@ -272,10 +272,10 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         // TODO add your handling code here:
-        Entrada panta =new Entrada();
-        panta.setVisible(true);
-        panta.pack();
-        panta.setLocationRelativeTo(null);
+        Entrada cancelar =new Entrada();
+        cancelar.setVisible(true);
+        cancelar.pack();
+        cancelar.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 

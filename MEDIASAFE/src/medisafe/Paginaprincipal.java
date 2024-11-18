@@ -260,10 +260,10 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        Medicina salir = new Medicina();
-        salir.setVisible(true);
-        salir.pack();
-        salir.setLocationRelativeTo(null);
+        Medicina medi = new Medicina();
+        medi.setVisible(true);
+        medi.pack();
+        medi.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
