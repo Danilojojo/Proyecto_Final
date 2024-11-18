@@ -90,6 +90,7 @@ public class Entrada extends javax.swing.JFrame {
         label4 = new java.awt.Label();
         jpass = new javax.swing.JPasswordField();
         Salir = new javax.swing.JButton();
+        Olvidar1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,14 +155,19 @@ public class Entrada extends javax.swing.JFrame {
             }
         });
 
+        Olvidar1.setBackground(new java.awt.Color(51, 51, 255));
+        Olvidar1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        Olvidar1.setText("La funcion Recupera es Premiun asi que guarda bien tus datos");
+        Olvidar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Olvidar1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Olvidar)
-                .addGap(57, 57, 57))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -182,14 +188,24 @@ public class Entrada extends javax.swing.JFrame {
                                             .addComponent(jpass, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
-                                .addComponent(jButton2))))
+                                .addComponent(jButton2)))
+                        .addGap(85, 85, 85))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(176, 176, 176)
                         .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Salir)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Olvidar1)
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Olvidar)
+                        .addGap(162, 162, 162))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,9 +231,11 @@ public class Entrada extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jLabel1)))
+                .addGap(18, 18, 18)
+                .addComponent(Olvidar1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Olvidar)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,11 +276,11 @@ public class Entrada extends javax.swing.JFrame {
 
     private void OlvidarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OlvidarMouseClicked
         // TODO add your handling code here:
-        Recupera olvida = new Recupera ();
+        /*Recupera olvida = new Recupera ();
         olvida.setVisible(true);
         olvida.pack();
         olvida.setLocationRelativeTo(null);
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_OlvidarMouseClicked
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
@@ -304,6 +322,10 @@ public class Entrada extends javax.swing.JFrame {
         this.dispose(); 
     }//GEN-LAST:event_SalirActionPerformed
 
+    private void Olvidar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Olvidar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Olvidar1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -341,6 +363,7 @@ public class Entrada extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Olvidar;
+    private javax.swing.JLabel Olvidar1;
     private javax.swing.JButton Salir;
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton jButton2;

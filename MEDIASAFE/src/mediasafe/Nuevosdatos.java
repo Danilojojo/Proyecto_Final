@@ -4,6 +4,14 @@
  */
 package mediasafe;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author uriza
@@ -16,7 +24,60 @@ public class Nuevosdatos extends javax.swing.JFrame {
     public Nuevosdatos() {
         initComponents();
     }
+private boolean actualizarCorreoYContraseña(String correoActual, String nuevoCorreo, String nuevaContraseña) {
+    // Obtener el archivo del usuario con el correo actual
+    File archivoUsuario = new File("usuarios", correoActual + ".txt");
 
+    // Verificar si el archivo existe
+    if (!archivoUsuario.exists()) {
+        JOptionPane.showMessageDialog(this, "El usuario no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    // Leer el archivo y almacenar el contenido actualizado
+    StringBuilder contenido = new StringBuilder();
+    boolean correoYContraseñaActualizados = false;
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivoUsuario))) {
+        String linea;
+        while ((linea = reader.readLine()) != null) {
+            // Reemplazar la línea de correo
+            if (linea.startsWith("Correo:")) {
+                contenido.append("Correo:" + nuevoCorreo + "\n");
+                correoYContraseñaActualizados = true;
+            }
+            // Reemplazar la línea de la contraseña
+            else if (linea.startsWith("Contraseña:")) {
+                contenido.append("Contraseña:" + nuevaContraseña + "\n");
+            }
+            else {
+                contenido.append(linea + "\n");
+            }
+        }
+
+        // Si no se actualizó el correo o la contraseña, significa que hubo un error
+        if (!correoYContraseñaActualizados) {
+            JOptionPane.showMessageDialog(this, "No se encontraron datos para actualizar.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Hubo un error al leer o escribir el archivo.");
+        return false;
+    }
+
+    // Guardar los cambios en el archivo
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoUsuario))) {
+        writer.write(contenido.toString());
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al guardar el archivo actualizado.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    return true;
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,9 +94,9 @@ public class Nuevosdatos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        correo = new javax.swing.JTextField();
+        contra2 = new javax.swing.JPasswordField();
+        nuevoc = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,10 +107,10 @@ public class Nuevosdatos extends javax.swing.JFrame {
         label2.setText("Datos");
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel1.setText("Nuevo Usuario");
+        jLabel1.setText("Correo Anterior");
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel2.setText("Contraseña");
+        jLabel2.setText("Correo Nuevo");
 
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel3.setText("Confirmar Contraseña");
@@ -86,16 +147,15 @@ public class Nuevosdatos extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addGap(194, 194, 194))))
+                        .addGap(194, 194, 194))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nuevoc, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(97, 97, 97)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -103,7 +163,7 @@ public class Nuevosdatos extends javax.swing.JFrame {
                                 .addComponent(jButton1)
                                 .addGap(95, 95, 95)
                                 .addComponent(jButton2))
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(contra2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,20 +176,20 @@ public class Nuevosdatos extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nuevoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,12 +206,31 @@ public class Nuevosdatos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        Entrada finalizar = new Entrada();
-        finalizar.setVisible(true);
-        finalizar.pack();
-        finalizar.setLocationRelativeTo(null);
-        this.dispose();
+    String correoActual = correo.getText();  // Correo actual del usuario
+    String nuevoCorreo = nuevoc.getText();  // Nuevo correo ingresado
+    String nuevaContraseña = new String(contra2.getPassword());  // Nueva contraseña
+
+    // Validación básica
+    if (nuevoCorreo.isEmpty() || nuevaContraseña.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingresa tanto el correo como la contraseña.");
+        return;
+    }
+
+    // Llamar al método para actualizar los datos del usuario
+    boolean actualizado = actualizarCorreoYContraseña(correoActual, nuevoCorreo, nuevaContraseña);
+    
+    if (actualizado) {
+        JOptionPane.showMessageDialog(this, "Correo y contraseña actualizados con éxito.");
+    } else {
+        JOptionPane.showMessageDialog(this, "Hubo un error al actualizar los datos.");
+    }
+
+    // Abrir la nueva ventana después de la actualización exitosa
+    Entrada finalizar = new Entrada();
+    finalizar.setVisible(true);
+    finalizar.pack();
+    finalizar.setLocationRelativeTo(null);
+    this.dispose();  // Cerrar la ventana actual
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -190,15 +269,15 @@ public class Nuevosdatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField contra2;
+    private javax.swing.JTextField correo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
     private java.awt.Label label2;
+    private javax.swing.JTextField nuevoc;
     // End of variables declaration//GEN-END:variables
 }
