@@ -22,7 +22,53 @@ public class Entrada extends javax.swing.JFrame {
      */
     public Entrada() {
         initComponents();}
-     
+    
+    private boolean validarCredenciales(String correo, String password) {
+    // Obtener la carpeta principal donde se almacenan los archivos de los usuarios
+    File carpetaUsuarios = new File("usuarios"); // Carpeta donde están los archivos con el correo como nombre
+    
+    // Verificar si la carpeta de usuarios existe
+    if (!carpetaUsuarios.exists() || !carpetaUsuarios.isDirectory()) {
+        JOptionPane.showMessageDialog(this, "Carpeta de usuarios no encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    // Crear el archivo que tiene el nombre del correo del usuario (correo.txt)
+    String correoNormalizado = correo.trim().toLowerCase(); // Elimina espacios y convierte a minúsculas
+    File archivoUsuario = new File(carpetaUsuarios, correoNormalizado + ".txt");
+    
+
+    // Verificar si el archivo de ese correo existe
+    if (!archivoUsuario.exists()) {
+        JOptionPane.showMessageDialog(this, "El correo no corresponde a un usuario registrado.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    // Leer el archivo para validar las credenciales
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivoUsuario))) {
+        String linea;
+        String passwordArchivo = "";
+
+        // Leer las líneas del archivo
+        while ((linea = reader.readLine()) != null) {
+            // Buscar la línea que contiene la contraseña
+            if (linea.startsWith("Contraseña:")) {
+                passwordArchivo = linea.split(":")[1].trim(); // Obtener la contraseña almacenada
+            }
+        }
+
+        // Comparar las contraseñas
+        if (password.equals(passwordArchivo)) {
+            return true; // Credenciales válidas
+        } else {
+            return false; // Contraseña incorrecta
+        }
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al leer el archivo de usuario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -221,7 +267,7 @@ public class Entrada extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-     String correo = Usuario.getText();
+    String correo = Usuario.getText();
     String password = new String(jpass.getPassword());
 
     // Validar campos vacíos
@@ -230,7 +276,7 @@ public class Entrada extends javax.swing.JFrame {
         return;
     }
 
-    // Validar credenciales desde el archivo
+    // Validar credenciales desde la carpeta del usuario
     if (validarCredenciales(correo, password)) {
         JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
 
@@ -243,48 +289,6 @@ public class Entrada extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
-
-private boolean validarCredenciales(String correo, String password) {
-    File archivo = new File("usuarios.txt");
-    if (!archivo.exists()) {
-        JOptionPane.showMessageDialog(this, "Archivo de usuarios no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
-        return false;
-    }
-
-    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
-        String linea;
-      String nombre = "", apellido = "", correoArchivo = "", passwordArchivo = "";
-
-        while ((linea = reader.readLine()) != null) {
-            linea = linea.trim(); // Elimina espacios en blanco al inicio y al final
-
-            if (linea.startsWith("Nombre=")) {
-                nombre = linea.split("=")[1].trim();
-            } else if (linea.startsWith("Apellido=")) {
-                apellido = linea.split("=")[1].trim();
-            } else if (linea.startsWith("Correo=")) {
-                correoArchivo = linea.split("=")[1].trim();
-            } else if (linea.startsWith("Contraseña=")) {
-                passwordArchivo = linea.split("=")[1].trim();
-            }
-
-            // Si encontramos una línea de separación o fin de usuario
-            if (linea.startsWith("---")) {
-                // Validar credenciales
-                if (correo.equals(correoArchivo) && password.equals(passwordArchivo)) {
-                    return true; // Credenciales válidas
-                }
-
-                // Reiniciar variables para el próximo usuario
-                nombre = apellido = correoArchivo = passwordArchivo = "";
-            }
-        }
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-    return false; // Credenciales no válidas
 
     }//GEN-LAST:event_loginActionPerformed
 

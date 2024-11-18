@@ -1,4 +1,0 @@
-Nombre: Danilo
-Apellido: de Leon
-Correo: danilo1@gmail.com
-Contraseña: danilo12345

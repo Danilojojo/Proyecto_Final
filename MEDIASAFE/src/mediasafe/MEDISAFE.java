@@ -19,6 +19,7 @@ public class MEDISAFE {
         Ingreso.setVisible(true);
         Ingreso.pack();
         Ingreso.setLocationRelativeTo(null);
+    
     }
     
 }

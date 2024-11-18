@@ -4,10 +4,9 @@
  */
 package mediasafe;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -237,13 +236,13 @@ public class Registrarse extends javax.swing.JFrame {
     // Guardar cada usuario en un archivo individual
     File archivoUsuario = new File(carpeta, correo + ".txt"); // El nombre del archivo es el correo
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoUsuario))) {
-        writer.write("Nombre: " + nombre);
+        writer.write("Nombre:" + nombre);
         writer.newLine();
-        writer.write("Apellido: " + apellido);
+        writer.write("Apellido:" + apellido);
         writer.newLine();
-        writer.write("Correo: " + correo);
+        writer.write("Correo:" + correo);
         writer.newLine();
-        writer.write("Contraseña: " + password);
+        writer.write("Contraseña:" + password);
         writer.newLine();
         JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
 
