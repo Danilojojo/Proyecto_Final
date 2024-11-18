@@ -2,3 +2,8 @@ Nombre:danilo
 Apellido:urizar
 Correo:danilo4@gmail.com
 Contraseña:danilo12345
+Enfermedad: gonorrea
+Medicamento: aaa
+Frecuencia: Cada 6 horas
+Duración: 7 días
+-----------------------------------

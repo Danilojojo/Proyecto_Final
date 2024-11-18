@@ -7,6 +7,7 @@ package mediasafe;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -47,43 +48,80 @@ public class Paginaprincipal extends javax.swing.JFrame {
         cargarDatosEnTablaDesdeArchivo();
     }
 
-    // Método para cargar los datos en la tabla desde un archivo
     private void cargarDatosEnTablaDesdeArchivo() {
-        // Limpiar la lista de medicamentos para asegurarse de que empieza en la posición 0
-        medicamentos.clear();
-        modelo.setRowCount(0); // Limpiar la tabla
+    // Limpiar la lista de medicamentos para asegurarse de que empieza en la posición 0
+    medicamentos.clear();
+    modelo.setRowCount(0); // Limpiar la tabla
 
-        // Ruta del archivo
-        File archivo = new File("Medicamentos.txt");
-        if (!archivo.exists()) {
-            JOptionPane.showMessageDialog(this, "El archivo 'Medicamentos.txt' no existe.");
-            return;
-        }
-
-        // Leer el contenido del archivo
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                // Leer datos en bloques separados por líneas
-                if (linea.startsWith("Enfermedad: ")) {
-                    String enfermedad = linea.replace("Enfermedad: ", "").trim();
-                    String medicamento = br.readLine().replace("Medicamento: ", "").trim();
-                    String frecuencia = br.readLine().replace("Frecuencia: ", "").trim();
-                    String duracion = br.readLine().replace("Duración: ", "").trim();
-
-                    // Agregar los datos directamente al modelo de la tabla
-                    modelo.addRow(new Object[]{enfermedad, medicamento, frecuencia, duracion});
-
-                    // Saltar línea separadora (opcional)
-                    br.readLine(); // Línea que contiene "-----------------------------------"
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Hubo un error al leer el archivo.");
-        }
+    // Obtener el correo del usuario actual
+    String correoUsuario = SesionUsuario.getCorreoUsuarioActual();
+    if (correoUsuario == null || correoUsuario.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No se encontró al usuario. Asegúrate de iniciar sesión.");
+        return;
     }
 
+    // Ruta del archivo del usuario dentro de la carpeta "usuarios"
+    File archivoUsuario = new File("usuarios", correoUsuario + ".txt");
+    if (!archivoUsuario.exists()) {
+        JOptionPane.showMessageDialog(this, "El archivo del usuario no existe.");
+        return;
+    }
+
+    // Leer el contenido del archivo
+    try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuario))) {
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            // Leer datos en bloques separados por líneas
+            if (linea.startsWith("Enfermedad: ")) {
+                String enfermedad = linea.replace("Enfermedad: ", "").trim();
+                String medicamento = br.readLine().replace("Medicamento: ", "").trim();
+                String frecuencia = br.readLine().replace("Frecuencia: ", "").trim();
+                String duracion = br.readLine().replace("Duración: ", "").trim();
+
+                // Agregar los datos directamente al modelo de la tabla
+                modelo.addRow(new Object[]{enfermedad, medicamento, frecuencia, duracion});
+
+                // Saltar línea separadora (opcional)
+                br.readLine(); // Línea que contiene "-----------------------------------"
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Hubo un error al leer el archivo del usuario.");
+    }
+}
+private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int frecuenciaEnHoras, int duracionEnDias) {
+    try {
+        // Obtener el correo del usuario actual (asegurarse de que esté logueado)
+        String correoUsuario = SesionUsuario.getCorreoUsuarioActual();
+        if (correoUsuario == null || correoUsuario.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se encontró al usuario.");
+            return false;
+        }
+
+        // Crear o abrir el archivo del usuario dentro de la carpeta "usuarios"
+        File archivoUsuario = new File("usuarios", correoUsuario + ".txt");
+
+        // Si el archivo no existe, crearlo
+        if (!archivoUsuario.exists()) {
+            archivoUsuario.createNewFile();
+        }
+
+        // Escribir los datos en el archivo correspondiente al usuario
+        try (FileWriter writer = new FileWriter(archivoUsuario, true)) { // "true" para agregar sin sobrescribir
+            writer.write("Enfermedad: " + enfermedad + "\n");
+            writer.write("Medicamento: " + medicamento + "\n");
+            writer.write("Frecuencia: Cada " + frecuenciaEnHoras + " horas\n");
+            writer.write("Duración: " + duracionEnDias + " días\n");
+            writer.write("-----------------------------------\n");
+        }
+
+        return true; // Indicar que se guardó correctamente
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false; // Indicar que hubo un error
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

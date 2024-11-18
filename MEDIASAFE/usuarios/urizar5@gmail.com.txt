@@ -2,3 +2,18 @@ Nombre:urizar
 Apellido:urizar
 Correo:urizar5@gmail.com
 Contraseña:urizar12345
+Enfermedad: sifilis
+Medicamento: hoy
+Frecuencia: Cada 4 horas
+Duración: 5 días
+-----------------------------------
+Enfermedad: sifilis
+Medicamento: hoy
+Frecuencia: Cada 1 horas
+Duración: 3 días
+-----------------------------------
+Enfermedad: pendejo
+Medicamento: a
+Frecuencia: Cada 7 horas
+Duración: 8 días
+-----------------------------------

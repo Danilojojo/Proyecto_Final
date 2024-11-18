@@ -276,16 +276,19 @@ public class Entrada extends javax.swing.JFrame {
         return;
     }
 
-    // Validar credenciales desde la carpeta del usuario
+    // Validar credenciales desde la carpeta de usuarios
     if (validarCredenciales(correo, password)) {
+        // Guardar el correo del usuario actual en la sesión
+        SesionUsuario.iniciarSesion(correo);
+
         JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
 
-        // Abrir la siguiente ventana
+        // Abrir la página principal
         Paginaprincipal ingresar = new Paginaprincipal();
         ingresar.setVisible(true);
         ingresar.pack();
         ingresar.setLocationRelativeTo(null);
-        this.dispose(); // Cierra la ventana actual
+        this.dispose(); // Cerrar la ventana actual
     } else {
         JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
     }

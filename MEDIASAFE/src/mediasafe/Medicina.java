@@ -27,13 +27,39 @@ public class Medicina extends javax.swing.JFrame {
     public Medicina() {
     
         initComponents();
-  
-        
-    
     }
-    
-    
+  private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int frecuenciaEnHoras, int duracionEnDias) {
+    // Obtener el correo del usuario actual desde la sesión
+    String correoUsuario = SesionUsuario.getCorreoUsuarioActual();
+    if (correoUsuario == null || correoUsuario.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No se encontró al usuario. Asegúrate de iniciar sesión.");
+        return false;
+    }
 
+    // Crear o verificar la carpeta de usuarios
+    File carpetaUsuarios = new File("usuarios");
+    if (!carpetaUsuarios.exists()) {
+        carpetaUsuarios.mkdirs(); // Si no existe, la crea
+    }
+
+    // Crear el archivo específico para el usuario con su correo
+    File archivoUsuario = new File(carpetaUsuarios, correoUsuario + ".txt");
+
+    try (FileWriter writer = new FileWriter(archivoUsuario, true)) {
+        // Escribir los datos del medicamento en el archivo del usuario
+        writer.write("Enfermedad: " + enfermedad + "\n");
+        writer.write("Medicamento: " + medicamento + "\n");
+        writer.write("Frecuencia: Cada " + frecuenciaEnHoras + " horas\n");
+        writer.write("Duración: " + duracionEnDias + " días\n");
+        writer.write("-----------------------------------\n");
+
+        return true; // Indicar que se guardó correctamente
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al guardar el medicamento: " + e.getMessage());
+        return false; // Indicar que hubo un error
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -176,7 +202,16 @@ public class Medicina extends javax.swing.JFrame {
 
     private void agregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregActionPerformed
         // TODO add your handling code here:
-     String enfermedad = Enfe.getText();
+
+     // Validar que haya un usuario en sesión
+    String correoUsuario = SesionUsuario.getCorreoUsuarioActual();
+    if (correoUsuario == null || correoUsuario.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No hay ningún usuario identificado. Inicia sesión primero.");
+        return; // Salir si no hay usuario en sesión
+    }
+
+    // Obtener los datos ingresados por el usuario
+    String enfermedad = Enfe.getText();
     String medicamento = medi.getText();
     String frecuencia = free.getText();
     String duracion = fin.getText();
@@ -213,8 +248,7 @@ public class Medicina extends javax.swing.JFrame {
         return;
     }
 
-
-    // Guardar los datos en un archivo
+    // Guardar los datos en el archivo correspondiente
     boolean guardado = guardarDatosEnArchivo(enfermedad, medicamento, frecuenciaEnHoras, duracionEnDias);
     if (guardado) {
         // Limpiar los campos después de guardar
@@ -236,27 +270,6 @@ public class Medicina extends javax.swing.JFrame {
         this.dispose();
     } else {
         JOptionPane.showMessageDialog(null, "Hubo un error al guardar el medicamento.");
-    }
-}
-
-// Método para guardar datos en un archivo
-private boolean guardarDatosEnArchivo( String enfermedad, String medicamento, int frecuenciaEnHoras, int duracionEnDias) {
-    try {
-        // Crear o abrir el archivo Medicamentos.txt en modo "append" (agregar contenido al final)
-        File archivo = new File("Medicamentos.txt");
-
-        try (FileWriter writer = new FileWriter(archivo, true)) { // "true" para agregar sin sobrescribir
-            writer.write("Enfermedad: " + enfermedad + "\n");
-            writer.write("Medicamento: " + medicamento + "\n");
-            writer.write("Frecuencia: Cada " + frecuenciaEnHoras + " horas\n");
-            writer.write("Duración: " + duracionEnDias + " días\n");
-            writer.write("-----------------------------------\n");
-        }
-
-        return true; // Indicar que se guardó correctamente
-    } catch (IOException e) {
-        e.printStackTrace();
-        return false; // Indicar que hubo un error
     }
     }//GEN-LAST:event_agregActionPerformed
 
