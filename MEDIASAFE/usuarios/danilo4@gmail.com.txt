@@ -7,3 +7,8 @@ Medicamento: aaa
 Frecuencia: Cada 6 horas
 Duración: 7 días
 -----------------------------------
+Enfermedad: iipuo
+Medicamento: uyoiy
+Frecuencia: Cada 1 horas
+Duración: 7 días
+-----------------------------------
