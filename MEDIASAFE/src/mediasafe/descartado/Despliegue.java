@@ -5,7 +5,7 @@
 package mediasafe.descartado;
 
 import javax.swing.JPanel;
-import mediasafe.Entrada;
+import medisafe.Entrada;
 
 /**
  *

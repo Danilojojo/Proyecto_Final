@@ -1,0 +1,9 @@
+Nombre:Jose
+Apellido:Rojas
+Correo:jose12@gmail.com
+Contraseña:jose12345
+Enfermedad: sifilis
+Medicamento: ella
+Frecuencia: Cada 5 horas
+Duración: 7 días
+-----------------------------------

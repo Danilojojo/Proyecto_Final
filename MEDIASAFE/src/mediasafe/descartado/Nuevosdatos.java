@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-import mediasafe.Entrada;
+import medisafe.Entrada;
 
 /**
  *

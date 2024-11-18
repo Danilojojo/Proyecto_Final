@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package mediasafe;
+package medisafe;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -126,10 +126,9 @@ public class Registrarse extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Confirmpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(Password, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Email, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Lastname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))))
+                                    .addComponent(Password)
+                                    .addComponent(Email)
+                                    .addComponent(Lastname, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))))
                         .addGap(0, 74, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(202, 202, 202)

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package mediasafe;
+package medisafe;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -187,7 +187,7 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mediasafe/igual.png"))); // NOI18N
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medisafe/igual.png"))); // NOI18N
         jMenu3.setToolTipText("");
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
