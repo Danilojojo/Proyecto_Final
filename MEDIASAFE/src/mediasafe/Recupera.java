@@ -26,41 +26,35 @@ public class Recupera extends javax.swing.JFrame {
    
    
     }
-public boolean verificarCorreo(String email) {
-    try {
-        // Archivo donde están almacenados los usuarios (el "blog de notas")
-        File archivo = new File("usuarios.txt");
-        
-        // Verificar si el archivo existe
-        if (!archivo.exists()) {
-            System.out.println("El archivo de usuarios no existe.");
-            return false;
-        }
-        
-        BufferedReader reader = new BufferedReader(new FileReader(archivo));
-        String linea;
-        String correo = null;  // Variable para almacenar el correo encontrado en cada bloque de datos
-        
-        // Leer el archivo línea por línea
-        while ((linea = reader.readLine()) != null) {
-            // Verificar si la línea contiene el correo
-            if (linea.startsWith("Correo")) {
-                correo = linea.split("=")[1].trim();  // Obtener el correo después de "Correo="
-                
-                // Si el correo coincide con el ingresado, retornar verdadero
-                if (correo.equals(email)) {
-                    reader.close();  // Cerrar el lector
-                    return true;  // Correo encontrado
+public String recuperarContraseña(String email) {
+    // Carpeta donde se guardan los usuarios
+    File carpeta = new File("usuarios");
+    
+    // Verificar si la carpeta existe
+    if (!carpeta.exists() || !carpeta.isDirectory()) {
+        System.out.println("La carpeta de usuarios no existe.");
+        return null; // No se encontró la carpeta
+    }
+
+    // Buscar el archivo correspondiente al correo
+    File archivoUsuario = new File(carpeta, email + ".txt");
+    if (archivoUsuario.exists()) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivoUsuario))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                // Buscar la línea que contiene la contraseña
+                if (linea.startsWith("Contraseña:")) {
+                    return linea.split(":")[1].trim(); // Retorna la contraseña
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        
-        reader.close();  // Cerrar el lector si no se encuentra el correo
-    } catch (IOException e) {
-        e.printStackTrace();  // Imprimir el error en consola para depuración
-    }    
-    
-    return false;  // Correo no encontrado
+    } else {
+        System.out.println("No se encontró un archivo para el correo: " + email);
+    }
+
+    return null; // No se encontró la contraseña
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,14 +162,15 @@ public boolean verificarCorreo(String email) {
     private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
         // TODO add your handling code here:
      // Obtener el correo ingresado
-    String email = Correo.getText();  // Suponiendo que 'emailTextField' es el nombre de tu campo de texto para el correo
-    
-    // Verificar si el correo existe en el archivo
-    if (verificarCorreo(email)) {
-        // Si el correo es válido, mostrar un mensaje o continuar con el proceso
-        JOptionPane.showMessageDialog(this, "Correo encontrado, puedes continuar con la recuperación.");
+    String email = Correo.getText().trim();
 
-        // Ahora se abre la ventana de recuperación de código
+    // Verificar si el correo existe y recuperar la contraseña
+    String contraseña = recuperarContraseña(email);
+    if (contraseña != null) {
+        // Si se encontró la contraseña, mostrarla o continuar con el proceso
+        JOptionPane.showMessageDialog(this, "     Correo encontrado");
+
+        // Opcional: Abrir la siguiente ventana
         Codigo siguiente = new Codigo();  // Suponiendo que 'Codigo' es la ventana a la que deseas ir
         siguiente.setVisible(true);
         siguiente.pack();
