@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package mediasafe.descartado;
+package medisafe.premium;
 
-import mediasafe.descartado.Nuevosdatos;
-import mediasafe.descartado.Recupera;
+import medisafe.Posiblesfunciones.Nuevosdatos;
+import medisafe.premium.Recupera;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
