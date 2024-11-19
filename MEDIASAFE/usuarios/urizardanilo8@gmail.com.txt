@@ -8,3 +8,8 @@ Medicamento: Ella(CP)
 Frecuencia: Cada 1 horas
 Duración: 30000 días
 -----------------------------------
+Enfermedad: Pendes
+Medicamento: no hay
+Frecuencia: Cada 1 horas
+Duración: 50000 días
+-----------------------------------
