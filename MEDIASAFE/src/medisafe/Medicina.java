@@ -118,7 +118,7 @@ public class Medicina extends javax.swing.JFrame {
 
         agreg.setBackground(new java.awt.Color(204, 204, 204));
         agreg.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
-        agreg.setText("Agragar");
+        agreg.setText("Agregar");
         agreg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         agreg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
