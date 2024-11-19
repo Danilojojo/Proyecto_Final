@@ -27,8 +27,12 @@ public class Entrada extends javax.swing.JFrame {
     }
     
     private boolean validarCredenciales(String correo, String password) {
-    // Obtener la carpeta principal donde se almacenan los archivos de los usuarios
-    File carpetaUsuarios = new File("usuarios"); // Carpeta donde están los archivos con el correo como nombre
+    String userHome = System.getProperty("user.home");
+
+        // Definir la ruta para el nuevo directorio
+        String rutaDirectorio = userHome + "\\Documents\\MiDirectorio";
+        // Obtener la carpeta principal donde se almacenan los archivos de los usuarios
+    File carpetaUsuarios = new File(rutaDirectorio); // Carpeta donde están los archivos con el correo como nombre
     
     // Verificar si la carpeta de usuarios existe
     if (!carpetaUsuarios.exists() || !carpetaUsuarios.isDirectory()) {

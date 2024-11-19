@@ -248,9 +248,12 @@ public class Registrarse extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "El nombre y el apellido solo deben contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
+String userHome = System.getProperty("user.home");
 
+        // Definir la ruta para el nuevo directorio
+        String rutaDirectorio = userHome + "\\Documents\\MiDirectorio";
     // Crear la carpeta si no existe
-    File carpeta = new File("usuarios");
+    File carpeta = new File(rutaDirectorio);
     if (!carpeta.exists()) {
         carpeta.mkdir(); // Crea la carpeta
     }

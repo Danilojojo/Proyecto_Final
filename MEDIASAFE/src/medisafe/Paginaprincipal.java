@@ -62,9 +62,12 @@ public class Paginaprincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "No se encontró al usuario. Asegúrate de iniciar sesión.");
         return;
     }
+String userHome = System.getProperty("user.home");
 
+        // Definir la ruta para el nuevo directorio
+        String rutaDirectorio = userHome + "\\Documents\\MiDirectorio";
     // Ruta del archivo del usuario dentro de la carpeta "usuarios"
-    File archivoUsuario = new File("usuarios", correoUsuario + ".txt");
+    File archivoUsuario = new File(rutaDirectorio, correoUsuario + ".txt");
     if (!archivoUsuario.exists()) {
         JOptionPane.showMessageDialog(this, "El archivo del usuario no existe.");
         return;

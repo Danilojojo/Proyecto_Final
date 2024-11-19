@@ -1,0 +1,5 @@
+Nombre:danilo
+Apellido:urizar
+Correo:urizar8@gmail.com
+Contraseña:urizar12345
+--------------------------------------

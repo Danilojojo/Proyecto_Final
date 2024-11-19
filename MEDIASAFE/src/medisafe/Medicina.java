@@ -37,9 +37,12 @@ public class Medicina extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "No se encontró al usuario. Asegúrate de iniciar sesión.");
         return false;
     }
+String userHome = System.getProperty("user.home");
 
+        // Definir la ruta para el nuevo directorio
+        String rutaDirectorio = userHome + "\\Documents\\MiDirectorio";
     // Crear o verificar la carpeta de usuarios
-    File carpetaUsuarios = new File("usuarios");
+    File carpetaUsuarios = new File(rutaDirectorio);
     if (!carpetaUsuarios.exists()) {
         carpetaUsuarios.mkdirs(); // Si no existe, la crea
     }
