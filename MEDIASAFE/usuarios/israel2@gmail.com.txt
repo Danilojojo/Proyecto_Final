@@ -1,0 +1,10 @@
+Nombre:Israel
+Apellido:Alvarado
+Correo:israel2@gmail.com
+Contraseña:israel12345
+--------------------------------------
+Enfermedad: Dolor de Cabeza
+Medicamento: Parasetamol
+Frecuencia: Cada 8 horas
+Duración: 3 días
+-----------------------------------
