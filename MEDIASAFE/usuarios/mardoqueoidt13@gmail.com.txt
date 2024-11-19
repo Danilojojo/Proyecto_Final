@@ -1,0 +1,10 @@
+Nombre:Raymundo
+Apellido:Veláquez
+Correo:mardoqueoidt13@gmail.com
+Contraseña:raymundo333
+--------------------------------------
+Enfermedad: Problemas de nivel de azucar
+Medicamento: Efinex met
+Frecuencia: Cada 12 horas
+Duración: 30 días
+-----------------------------------
