@@ -199,7 +199,9 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
             }
         });
 
+        jMenu1.setBackground(new java.awt.Color(204, 204, 204));
         jMenu1.setText("Ingresar Nuevo Medicamento");
+        jMenu1.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);
@@ -207,7 +209,9 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
         });
         jMenu3.add(jMenu1);
 
+        jMenu2.setBackground(new java.awt.Color(204, 204, 204));
         jMenu2.setText("Ayuda");
+        jMenu2.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);
@@ -215,7 +219,9 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
         });
         jMenu3.add(jMenu2);
 
+        jMenu4.setBackground(new java.awt.Color(204, 204, 204));
         jMenu4.setText("Salir");
+        jMenu4.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu4MouseClicked(evt);
