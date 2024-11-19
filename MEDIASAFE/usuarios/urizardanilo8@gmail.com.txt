@@ -13,3 +13,8 @@ Medicamento: no hay
 Frecuencia: Cada 1 horas
 Duración: 50000 días
 -----------------------------------
+Enfermedad: aaa
+Medicamento: a
+Frecuencia: Cada 4 horas
+Duración: 5 días
+-----------------------------------
