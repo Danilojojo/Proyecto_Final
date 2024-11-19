@@ -72,33 +72,49 @@ public class Registrarse extends javax.swing.JFrame {
         label6.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         label6.setText("Confirme su Contraseña");
 
+        Name.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        Name.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NameActionPerformed(evt);
             }
         });
 
+        Lastname.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        Lastname.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Lastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LastnameActionPerformed(evt);
             }
         });
 
+        Email.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+
+        Registrarse.setBackground(new java.awt.Color(204, 204, 204));
         Registrarse.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         Registrarse.setText("Registrarse");
+        Registrarse.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Registrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistrarseActionPerformed(evt);
             }
         });
 
+        Cancelar.setBackground(new java.awt.Color(204, 204, 204));
         Cancelar.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         Cancelar.setText("Cancelar");
+        Cancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarActionPerformed(evt);
             }
         });
+
+        Password.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        Password.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        Confirmpassword.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        Confirmpassword.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medisafe/log.png"))); // NOI18N
 
@@ -182,7 +198,7 @@ public class Registrarse extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Registrarse)
                     .addComponent(Cancelar))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         pack();

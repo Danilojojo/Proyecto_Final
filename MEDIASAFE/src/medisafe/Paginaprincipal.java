@@ -153,6 +153,7 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 20)); // NOI18N
         jLabel1.setText("Proximo Evento");
 
+        ver.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         ver.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -171,14 +172,13 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(jLabel1)))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(223, 223, 223))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,6 +190,7 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
+        jMenu3.setBackground(new java.awt.Color(204, 204, 204));
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medisafe/igual.png"))); // NOI18N
         jMenu3.setToolTipText("");
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -118,6 +118,7 @@ public class Entrada extends javax.swing.JFrame {
             }
         });
 
+        Usuario.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         Usuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +151,7 @@ public class Entrada extends javax.swing.JFrame {
         label4.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         label4.setText("Contraseña");
 
+        jpass.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jpass.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,7 +247,7 @@ public class Entrada extends javax.swing.JFrame {
                 .addComponent(Olvidar)
                 .addGap(18, 18, 18)
                 .addComponent(Olvidar1)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
