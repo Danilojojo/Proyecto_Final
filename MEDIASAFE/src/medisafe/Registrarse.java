@@ -6,10 +6,8 @@ package medisafe;
 
 import java.io.BufferedWriter;
 import java.io.File;
-
 import java.io.FileWriter;
 import java.io.IOException;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -187,9 +185,7 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-  
-
-    // Obtener los datos de los campos
+      // Obtener los datos de los campos
     String nombre = Name.getText().trim();
     String apellido = Lastname.getText().trim();
     String correo = Email.getText().trim();

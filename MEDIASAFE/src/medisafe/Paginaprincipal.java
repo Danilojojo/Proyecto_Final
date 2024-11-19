@@ -271,8 +271,7 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
         // TODO add your handling code here:
                  JOptionPane.showMessageDialog(
         this, // Componente padre (el JFrame actual)
-        "Puede llamarnos y contactarse con nosotros al 123-456-7890.\n" +
-        "O envíe un correo a soporte@empresa.com.", // Mensaje
+        " Envíe un correo a soporte@empresa.com.", // Mensaje
         "Ayuda - Contacto", // Título del cuadro de diálogo
         JOptionPane.INFORMATION_MESSAGE // Tipo de mensaje (informativo)
     ); 
