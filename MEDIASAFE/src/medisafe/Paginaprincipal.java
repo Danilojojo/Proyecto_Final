@@ -196,7 +196,7 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
         );
 
         jMenu3.setBackground(new java.awt.Color(204, 204, 204));
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medisafe/igual.png"))); // NOI18N
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medisafe/imagenes/igual.png"))); // NOI18N
         jMenu3.setToolTipText("");
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
