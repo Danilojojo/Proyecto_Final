@@ -176,7 +176,7 @@ public class Entrada extends javax.swing.JFrame {
 
         Olvidar1.setBackground(new java.awt.Color(51, 51, 255));
         Olvidar1.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        Olvidar1.setText("La funcion Recuperar es Premiun asi que guarda tus datos");
+        Olvidar1.setText("La función \"RECUPERAR\" es de PAGA, asi que guarda tus datos");
         Olvidar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Olvidar1MouseClicked(evt);
@@ -248,9 +248,9 @@ public class Entrada extends javax.swing.JFrame {
                             .addComponent(jpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(login))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(login)
+                            .addComponent(jButton2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Olvidar)
                 .addGap(18, 18, 18)
