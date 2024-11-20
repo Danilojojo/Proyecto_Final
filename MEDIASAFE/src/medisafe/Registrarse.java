@@ -210,86 +210,90 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarseActionPerformed
         // TODO add your handling code here:
-      // Obtener los datos de los campos
-    String nombre = Name.getText().trim();
-    String apellido = Lastname.getText().trim();
-    String correo = Email.getText().trim();
-    String password = new String(Password.getPassword()).trim();
-    String confirmar = new String(Confirmpassword.getPassword()).trim();
+  // Obtener los datos de los campos
+String nombre = Name.getText().trim();
+String apellido = Lastname.getText().trim();
+String correo = Email.getText().trim();
+String password = new String(Password.getPassword()).trim();
+String confirmar = new String(Confirmpassword.getPassword()).trim();
 
-    // Validar campos vacíos
-    if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() || confirmar.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+// Validar campos vacíos
+if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty() || confirmar.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
 
-    // Validar formato del correo electrónico
-    if (!correo.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
-        JOptionPane.showMessageDialog(this, "Por favor, introduce un correo electrónico válido.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+// Validar formato del correo electrónico
+if (!correo.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+    JOptionPane.showMessageDialog(this, "Por favor, introduce un correo electrónico válido.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
 
-    // Validar que la contraseña tenga al menos 8 caracteres y contenga letras y números
-    if (password.length() < 8 || !password.matches(".*[a-zA-Z].*") || !password.matches(".*\\d.*")) {
-        JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 8 caracteres, incluir letras y números.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+// Validar que la contraseña tenga al menos 8 caracteres y contenga letras y números
+if (password.length() < 8 || !password.matches(".*[a-zA-Z].*") || !password.matches(".*\\d.*")) {
+    JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 8 caracteres, incluir letras y números.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
 
-    // Validar que las contraseñas coincidan
-    if (!password.equals(confirmar)) {
-        JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
-        Password.setText("");
-        Confirmpassword.setText("");
-        return;
-    }
+// Validar que las contraseñas coincidan
+if (!password.equals(confirmar)) {
+    JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
+    Password.setText("");
+    Confirmpassword.setText("");
+    return;
+}
 
-    // Validar que el nombre y apellido no contengan números ni caracteres especiales
-    if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+") || !apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
-        JOptionPane.showMessageDialog(this, "El nombre y el apellido solo deben contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+// Validar que el nombre y apellido no contengan números ni caracteres especiales
+if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+") || !apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+    JOptionPane.showMessageDialog(this, "El nombre y el apellido solo deben contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
+// Obtener la carpeta del usuario actual
 String userHome = System.getProperty("user.home");
+String rutaDirectorio = userHome + File.separator + "Documents" + File.separator + "MiDirectorio";
 
-        // Definir la ruta para el nuevo directorio
-        String rutaDirectorio = userHome + "\\Documents\\MiDirectorio";
-    // Crear la carpeta si no existe
-    File carpeta = new File(rutaDirectorio);
-    if (!carpeta.exists()) {
-        carpeta.mkdir(); // Crea la carpeta
+// Crear la carpeta si no existe
+File carpeta = new File(rutaDirectorio);
+if (!carpeta.exists()) {
+    if (!carpeta.mkdir()) {
+        JOptionPane.showMessageDialog(this, "No se pudo crear el directorio para guardar los usuarios.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
     }
+}
 
-    // Guardar cada usuario en un archivo individual
-    File archivoUsuario = new File(carpeta, correo + ".txt"); // El nombre del archivo es el correo
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoUsuario))) {
-        writer.write("Nombre:" + nombre);
-        writer.newLine();
-        writer.write("Apellido:" + apellido);
-        writer.newLine();
-        writer.write("Correo:" + correo);
-        writer.newLine();
-        writer.write("Contraseña:" + password);
-        writer.newLine();
-        writer.write("--------------------------------------");
-        writer.newLine();
-        JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
+// Guardar cada usuario en un archivo individual
+File archivoUsuario = new File(carpeta, correo + ".txt");
+try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoUsuario))) {
+    writer.write("Nombre:" + nombre);
+    writer.newLine();
+    writer.write("Apellido:" + apellido);
+    writer.newLine();
+    writer.write("Correo:" + correo);
+    writer.newLine();
+    writer.write("Contraseña:" + password);
+    writer.newLine();
+    writer.write("--------------------------------------");
+    writer.newLine();
+    JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
 
-        // Limpiar los campos
-        Name.setText("");
-        Lastname.setText("");
-        Email.setText("");
-        Password.setText("");
-        Confirmpassword.setText("");
+    // Limpiar los campos
+    Name.setText("");
+    Lastname.setText("");
+    Email.setText("");
+    Password.setText("");
+    Confirmpassword.setText("");
 
-        // Ir a la otra ventana
-        Entrada inicio = new Entrada();
-        inicio.setVisible(true);
-        inicio.pack();
-        inicio.setLocationRelativeTo(null);
-        this.dispose();
+    // Ir a la otra ventana
+    Entrada inicio = new Entrada();
+    inicio.setVisible(true);
+    inicio.pack();
+    inicio.setLocationRelativeTo(null);
+    this.dispose();
 
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+} catch (IOException ex) {
+    JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+}
 
         
     }//GEN-LAST:event_RegistrarseActionPerformed
