@@ -4,7 +4,7 @@
  */
 package medisafe.premium;
 
-import medisafe.Posiblesfunciones.Nuevosdatos;
+import medisafe.posiblresfunciones.Nuevosdatos;
 import medisafe.premium.Recupera;
 import java.util.Random;
 import javax.swing.JOptionPane;

@@ -4,6 +4,8 @@
  */
 package medisafe;
 
+import medisafe.clases.Medicamento;
+import medisafe.clases.SesionUsuario;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

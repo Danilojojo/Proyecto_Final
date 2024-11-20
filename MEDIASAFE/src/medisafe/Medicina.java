@@ -5,6 +5,7 @@
 package medisafe;
 
 
+import medisafe.clases.SesionUsuario;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -4,6 +4,7 @@
  */
 package medisafe;
 
+import medisafe.clases.SesionUsuario;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -243,7 +244,7 @@ public class Entrada extends javax.swing.JFrame {
                             .addComponent(jpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addComponent(login)))
                     .addComponent(jLabel1))
