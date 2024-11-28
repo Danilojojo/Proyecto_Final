@@ -238,12 +238,13 @@ String userHome = System.getProperty("user.home");
     private void agregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregActionPerformed
         // TODO add your handling code here:
 
-     // Validar que haya un usuario en sesión
-    String correoUsuario = SesionUsuario.getCorreoUsuarioActual();
+     // Validar que haya un usuario en sesión(No es necesario, por ya lo valida el login, y supuestamente cuando
+     //ya esta en sesión no en necesario verificar)
+   /* String correoUsuario = SesionUsuario.getCorreoUsuarioActual();
     if (correoUsuario == null || correoUsuario.isEmpty()) {
         JOptionPane.showMessageDialog(null, "No hay ningún usuario identificado. Inicia sesión primero.");
         return; // Salir si no hay usuario en sesión
-    }
+    }*/
 
     // Obtener los datos ingresados por el usuario
     String enfermedad = Enfe.getText();
@@ -300,7 +301,6 @@ String userHome = System.getProperty("user.home");
         agregado.setVisible(true);
         agregado.pack();
         agregado.setLocationRelativeTo(null);
-
         // Cerrar la ventana actual
         this.dispose();
     } else {

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import medisafe.posiblresfunciones.Informacion;
 
 
 /**
@@ -61,7 +62,7 @@ public class Paginaprincipal extends javax.swing.JFrame {
     // Obtener el correo del usuario actual
     String correoUsuario = SesionUsuario.getCorreoUsuarioActual();
     if (correoUsuario == null || correoUsuario.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "No se encontró al usuario. Asegúrate de iniciar sesión.");
+       // JOptionPane.showMessageDialog(this, "No se encontró al usuario. Asegúrate de iniciar sesión.");
         return;
     }
 String userHome = System.getProperty("user.home");
@@ -147,6 +148,7 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
         ver = new javax.swing.JTable();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -203,6 +205,15 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
                 jMenu3MouseClicked(evt);
             }
         });
+
+        jMenu5.setText("Información");
+        jMenu5.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
+        jMenu3.add(jMenu5);
 
         jMenu1.setBackground(new java.awt.Color(204, 204, 204));
         jMenu1.setText("Ingresar Nuevo Medicamento");
@@ -289,6 +300,17 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
     ); 
     }//GEN-LAST:event_jMenu2MouseClicked
 
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        // TODO add your handling code here:
+        
+       /* Informacion info = new Informacion();
+        info.setVisible(true);
+        info.pack();
+        info.setLocationRelativeTo(null);
+        this.dispose();*/
+       JOptionPane.showMessageDialog( this, " Esta opción esta de Paga, por tan solo $6 al mes"); 
+    }//GEN-LAST:event_jMenu5MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -331,6 +353,7 @@ private boolean guardarDatosEnArchivo(String enfermedad, String medicamento, int
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

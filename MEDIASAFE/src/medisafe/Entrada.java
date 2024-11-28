@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import medisafe.premium.Recupera;
 
 
 /**
@@ -252,8 +253,8 @@ public class Entrada extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Olvidar)
                 .addGap(18, 18, 18)
-                .addComponent(Olvidar1)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(Olvidar1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -293,11 +294,12 @@ public class Entrada extends javax.swing.JFrame {
 
     private void OlvidarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OlvidarMouseClicked
         // TODO add your handling code here:
-        /*Recupera olvida = new Recupera ();
+       /* Recupera olvida = new Recupera ();
         olvida.setVisible(true);
         olvida.pack();
         olvida.setLocationRelativeTo(null);
         this.dispose();*/
+       JOptionPane.showMessageDialog( this, " La función \"RECUPERAR\" es de PAGA, asi que guarda tus datos"); 
     }//GEN-LAST:event_OlvidarMouseClicked
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
@@ -316,7 +318,8 @@ public class Entrada extends javax.swing.JFrame {
         // Guardar el correo del usuario actual en la sesión
         SesionUsuario.iniciarSesion(correo);
 
-        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
+    //No es necesario ponerlo porque iniciara secion permanentemente   
+    // JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
 
         // Abrir la página principal
         Paginaprincipal ingresar = new Paginaprincipal();
